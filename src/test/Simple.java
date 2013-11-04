@@ -1,7 +1,7 @@
 /**
  * 
  */
-package test.aoeng.oa;
+package test;
 
 /**
  * Oct 31, 2013 1:20:04 PM
