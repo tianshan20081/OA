@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<init package="com.aoeng.oa.model">
+	<entity class="Company" name="首信易支付" description="首信易支付，支付专家"
+		call="partyService.addParty">
+		<entity class="Person" name="出纳" sex="女" tel="01012345676" />
+		<entity class="Person" name="出纳" sex="女" tel="01012345676" />
+		<entity class="Person" name="出纳" sex="女" tel="01012345676" />
+		<entity class="Department" name="总经办">
+			<entity class="Position" name="总经理">
+				<entity class="Person" name="张三" sex="男" tel="01012345678" />
+			</entity>
+			<entity class="Position" name="副总经理">
+				<entity class="Person" name="小丽" sex="女" tel="01012345679" />
+			</entity>
+		</entity>
+		<entity class="Department" name="财务部">
+			<entity class="Position" name="会计">
+				<entity class="Person" name="赵六" sex="男" tel="01012345677" />
+			</entity>
+			<entity class="Position" name="副总经理">
+				<entity class="Person" name="出纳" sex="女" tel="01012345676" />
+			</entity>
+		</entity>
+		<entity class="Company" name="西安分公司"></entity>
+	</entity>
+</init>

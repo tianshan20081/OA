@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<include file="common.xml" />
+	<package name="system" namespace="/system" extends="common">
+		<!-- <action name="company" class="companyAction" > <result name="company_input">/org/company_input.jsp</result> 
+			<result name="save_success">/org/save_success.jsp</result> </action> <action 
+			name="party" class="partyAction"> <result name="index">/org/index.jsp</result> 
+			</action> -->
+
+		<action name="*" class="{1}Action">
+			<result name="index">/org/index.jsp</result>
+			<result name="company_input">/org/company_input.jsp</result>
+			<result name="update_input">/org/{1}_update_input.jsp</result>
+			<result name="add_input">/org/{1}_add_input.jsp</result>
+			<result name="add_success">/org/add_success.jsp</result>
+			<result name="del_success">/org/del_success.jsp</result>
+			<result name="update_success">/org/update_success.jsp</result>
+			<result name="person_list">/org/person_list.jsp</result>
+			
+
+		</action>
+	</package>
+</struts>
