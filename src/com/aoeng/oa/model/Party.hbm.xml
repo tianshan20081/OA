@@ -36,6 +36,7 @@
 			<property name="msn"/>
 			<property name="address"/>
 			<property name="snumber"/>
+			<one-to-one name="user" />
 		</subclass>
 		<subclass name="Department" discriminator-value="D">
 			<property name="snumber"/>

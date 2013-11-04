@@ -37,7 +37,14 @@
 		</property>
 		<property name="mappingResources">
 			<list>
+			<value>com/aoeng/oa/model/Menu.hbm.xml</value>
 				<value>com/aoeng/oa/model/Party.hbm.xml</value>
+				<value>com/aoeng/oa/model/ACL.hbm.xml</value>
+				<value>com/aoeng/oa/model/ActionResource.hbm.xml</value>
+				
+				<value>com/aoeng/oa/model/Role.hbm.xml</value>
+				<value>com/aoeng/oa/model/User.hbm.xml</value>
+				<value>com/aoeng/oa/model/UserRoles.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -67,9 +74,6 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="fooServiceOperation" />
 	</aop:config>
 
-	<bean id="initService" class="com.aoeng.oa.service.impl.InitServiceImpl">
-		<property name="path" value="init.xml" />
-	</bean>
 </beans>
 
                                 

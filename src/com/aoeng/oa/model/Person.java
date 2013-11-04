@@ -40,9 +40,10 @@ public class Person extends Party{
 	 * 員工邮箱
 	 */
 	private String email ;
-	
-	
-	
+	/**
+	 * 账户的引用
+	 */
+	private User user ;
 	/**
 	 * @return the snumber
 	 */
@@ -139,12 +140,22 @@ public class Person extends Party{
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
+	/**
+	 * @return the user
 	 */
-	@Override
-	public String toString() {
-		return "Person [snumber=" + snumber + ", address=" + address + ", qq=" + qq + ", msn=" + msn + ", duty=" + duty + ", phone=" + phone + ", sex=" + sex + ", email=" + email + "]";
+	public User getUser() {
+		return user;
 	}
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+	
+	
+	
 	
 }
