@@ -22,6 +22,9 @@ import junit.framework.TestCase;
  */
 public class Test extends TestCase {
 	
+	
+	
+	
 	public void test1() throws Exception {
 		long start = System.currentTimeMillis();
 		BeanFactory factory = new ClassPathXmlApplicationContext("app*.xml");
