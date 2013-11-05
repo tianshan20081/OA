@@ -35,5 +35,13 @@
 			<result name="add_success">/org/role/add_success.jsp</result>
 			<result name="update_success">/org/role/update_success.jsp</result>
 		</action>
+		<action name="menu" class="menuAction">
+			<result name="index">/org/menu/index.jsp</result>
+			<result name="add_input">/org/menu/add_input.jsp</result>
+			<result name="update_input">/org/menu/update_input.jsp</result>
+			<result name="add_success">/org/menu/add_success.jsp</result>
+			<result name="update_success">/org/menu/update_success.jsp</result>
+			<result name="del_success">/org/menu/del_success.jsp</result>
+		</action>
 	</package>
 </struts>
