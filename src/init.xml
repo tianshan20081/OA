@@ -21,6 +21,11 @@
 				<entity class="Person" name="出纳" sex="女" tel="01012345676" />
 			</entity>
 		</entity>
-		<entity class="Company" name="西安分公司"></entity>
+		<entity class="Company" name="西安分公司"/>
 	</entity>
+	<entity class="Role" name="系统管理员" call="roleService.addRole"/>
+	<entity class="Role" name="普通员工" call="roleService.addRole"/>
+	<entity class="Role" name="部门领导" call="roleService.addRole"/>
+	<entity class="Role" name="档案管理员" call="roleService.addRole"/>
+	<entity class="Role" name="超级管理员" call="roleService.addRole"/>
 </init>

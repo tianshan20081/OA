@@ -35,7 +35,7 @@ $(function() {
 		"sPaginationType" : "full_numbers",
 		"oLanguage" : { // 主要用于设置各种提示文本
 			"sProcessing" : "正在处理...", // 设置进度条显示文本
-			"sLengthMenu" : "每页_MENU_行 <input type='button' value='添加账号' onclick='addUser();' /> <input type='button' value='删除人员' onclick='delUser();' /> <input type='button' value='更新人员' onclick='updateUser();' />",// 显示每页多少条记录
+			"sLengthMenu" : "每页_MENU_行 <input type='button' value='添加人员账号' onclick='addUser();' /> <input type='button' value='删除人员账号' onclick='delUser();' /> <input type='button' value='更新人员账号' onclick='updateUser();' />",// 显示每页多少条记录
 			"sEmptyTable" : "没有找到记录",// 没有记录时显示的文本
 			"sZeroRecords" : "没有找到记录",// 没有记录时显示的文本
 			"sInfo" : "总记录数 _TOTAL_ 当前显示从 _START_ 至 _END_",
@@ -116,7 +116,7 @@ function fnGetSelected(oTab) {
 		}
 		// 获取选中人员de id
 		var personId = anSelected[0].children[0].innerHTML;
-	 window.location = "system/user.action?person.id="+personId;
+	 window.location = "system/user!addInput.action?person.id="+personId;
  }
 </script>
 </head>

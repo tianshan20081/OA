@@ -42,7 +42,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	public void update(User user, int[] roleIds) {
 		// TODO Auto-generated method stub
 		getSession().update(user);
-
 		String hql = "select ur from UserRoles ur left join ur.user u where u.id = ?";
 		List<UserRoles> roles = getSession().createQuery(hql).setParameter(0, user.getId()).list();
 		//删除旧的关联
@@ -69,8 +68,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 	@Override
 	public List<Integer> findRoleIdsOfUser(int userId) {
 		// TODO Auto-generated method stub
-		String hql = "select r.id form UserRoles ur join ur.role r join ur.user u where u.id = ?";
-		
+		String hql = "select r.id from UserRoles ur join ur.role r join ur.user u where u.id = ?";
 		return getSession().createQuery(hql).setParameter(0, userId).list();
 	}
 

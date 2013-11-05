@@ -51,11 +51,12 @@ public class UserAction implements ModelDriven {
 		this.roleIds = roleIds;
 	}
 
+
 	/**
-	 * @return the sSearch
+	 * @param sSearch the sSearch to set
 	 */
-	public String getSSearch() {
-		return sSearch;
+	public void setSSearch(String sSearch) {
+		this.sSearch = sSearch;
 	}
 
 	/*
@@ -111,6 +112,7 @@ public class UserAction implements ModelDriven {
 	 * @return
 	 */
 	public String updateInput() {
+		model = userService.findUserById(model.getId());
 		// 查询所用的角色
 		List<Role> roles = roleService.findAllRoles();
 		// 查询用户已经被赋予的角色 Id
