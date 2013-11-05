@@ -34,13 +34,6 @@ public class Department extends Party{
 	public void setTel(String tel) {
 		this.tel = tel;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Department [snumber=" + snumber + ", tel=" + tel + "]";
-	}
 	
 	
 	

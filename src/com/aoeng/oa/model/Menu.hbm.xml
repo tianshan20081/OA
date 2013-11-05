@@ -9,7 +9,7 @@
 		<property name="name"/>
 		<property name="href"/>
 		<property name="orderNumber"/>
-		<property name="disPlay"/>
+		<property name="display"/>
 		<property name="sn"/>
 		<many-to-one name="parent" column="pid"/>
 		<set name="children" inverse="true" lazy="extra" order-by="orderNumber">

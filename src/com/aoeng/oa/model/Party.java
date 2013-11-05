@@ -10,12 +10,12 @@ import java.util.Set;
  *
  */
 public class Party {
-	 private int id;
-     private String name;
-     private String description;
-     private Party parent;
-     private Set<Party> children;
-     private String sn;
+	private int id;
+	private String name;
+	private String description;
+	private Party parent;
+	private Set<Party> children;
+	private String sn;
      
 	/**
 	 * 
@@ -111,13 +111,6 @@ public class Party {
 	 */
 	public void setSn(String sn) {
 		this.sn = sn;
-	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Party [id=" + id + ", name=" + name + ", description=" + description + ", parent=" + parent + ", children=" + children + ", sn=" + sn + "]";
 	}
      
      

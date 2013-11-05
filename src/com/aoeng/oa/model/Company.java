@@ -120,13 +120,6 @@ public class Company extends Party{
 	public void setIndustry(String industry) {
 		this.industry = industry;
 	}
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		return "Company [tel=" + tel + ", fax=" + fax + ", address=" + address + ", postcode=" + postcode + ", site=" + site + ", email=" + email + ", industry=" + industry + "]";
-	}
 	
 	
 

@@ -12,8 +12,8 @@ public class ACL {
 	private int id;
 	private String principalType;
 	private int principalId;
-	private int resourceId;
 	private String resourceType;
+	private int resourceId;
 	private int aclState;
 	private int aclTriState;
 

@@ -9,6 +9,4 @@ package com.aoeng.oa.model;
  */
 public class Position extends Party {
 	
-
-	
 }

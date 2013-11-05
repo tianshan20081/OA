@@ -3,6 +3,9 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Nov 4, 20137:16:59 PM
  * 
@@ -12,6 +15,21 @@ public class User implements Principal {
 	private String username;
 	private String password;
 	private Person person;
+	private Set<UserRoles> userRoles = new HashSet<UserRoles>(); 
+	/**
+	 * @return the userRoles
+	 */
+	public Set<UserRoles> getUserRoles() {
+		return userRoles;
+	}
+
+	/**
+	 * @param userRoles
+	 *            the userRoles to set
+	 */
+	public void setUserRoles(Set<UserRoles> userRoles) {
+		this.userRoles = userRoles;
+	}
 
 	/**
 	 * @return the id

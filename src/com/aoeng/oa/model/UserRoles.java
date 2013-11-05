@@ -8,9 +8,9 @@ package com.aoeng.oa.model;
  *
  */
 public class UserRoles  {
-	private int id ;
+	private int id;
 	private User user;
-	private Role role ;
+	private Role role;
 	/**
 	 * @return the id
 	 */

@@ -153,9 +153,4 @@ public class Person extends Party{
 		this.user = user;
 	}
 	
-	
-	
-	
-	
-	
 }

@@ -10,7 +10,6 @@ package com.aoeng.oa.model;
 public class ActionResource implements SysResource {
 	private int id;
 	private String className;
-
 	/**
 	 * @return the id
 	 */

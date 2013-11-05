@@ -20,8 +20,20 @@
 			<result name="del_success">/org/del_success.jsp</result>
 			<result name="update_success">/org/update_success.jsp</result>
 			<result name="person_list">/org/person_list.jsp</result>
-			
-
+		</action>
+		<action name="user" class="userAction">
+			<result name="index">/org/user/index.jsp</result>
+			<result name="add_input">/org/user/add_input.jsp</result>
+			<result name="update_input">/org/user/update_input.jsp</result>
+			<result name="add_success">/org/user/add_success.jsp</result>
+			<result name="update_success">/org/user/update_success.jsp</result>
+		</action>
+		<action name="role" class="roleAction">
+			<result name="index">/org/role/index.jsp</result>
+			<result name="add_input">/org/role/add_input.jsp</result>
+			<result name="update_input">/org/role/update_input.jsp</result>
+			<result name="add_success">/org/role/add_success.jsp</result>
+			<result name="update_success">/org/role/update_success.jsp</result>
 		</action>
 	</package>
 </struts>
