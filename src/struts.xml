@@ -43,5 +43,14 @@
 			<result name="update_success">/org/menu/update_success.jsp</result>
 			<result name="del_success">/org/menu/del_success.jsp</result>
 		</action>
+		<action name="resource" class="resourceAction">
+			<result name="index">/org/resource/index.jsp</result>
+			<result name="add_input">/org/resource/add_input.jsp</result>
+			<result name="update_input">/org/resource/update_input.jsp</result>
+			<result name="add_success">/org/resource/add_success.jsp</result>
+			<result name="update_success">/org/resource/update_success.jsp</result>
+			<result name="del_success">/org/resource/del_success.jsp</result>
+			<result name="oper_input">/org/resource/oper_input.jsp</result>
+		</action>
 	</package>
 </struts>

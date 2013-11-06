@@ -4,6 +4,7 @@
 package com.aoeng.oa.service.impl;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -24,6 +25,7 @@ import org.springframework.stereotype.Service;
 import com.aoeng.oa.annotations.Oper;
 import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.dao.ResourceDao;
+import com.aoeng.oa.model.ActionMethodOper;
 import com.aoeng.oa.model.ActionResource;
 
 /**
@@ -35,6 +37,7 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 	Logger logger = Logger.getLogger(ResourceServiceImpl.class.getName());
 	@Resource
 	private ResourceDao resourceDao;
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -66,6 +69,18 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 				}
 
 			}
+			//建立父子关系
+			List<ActionResource> resources = resourceDao.findAll(ActionResource.class);
+			for (ActionResource ar : resources) {
+				//根据 parentSn 判断是否存在 父资源
+				String parentSn = ar.getParentSn();
+				if (!StringUtils.isEmpty(parentSn)) {
+					ActionResource parent = resourceDao.findActionResourceBySn(parentSn);
+					if (parent != null) {
+						ar.setParent(parent);
+					}
+				}
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,7 +100,7 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 			ClassMetadata classMetadata = metaReader.getClassMetadata();
 			// 得到注解的元数据
 			AnnotationMetadata annoMetadata = metaReader.getAnnotationMetadata();
-			
+
 			// 判断是否定义了 @Res 注解
 			if (annoMetadata.hasAnnotation(Res.class.getName())) {
 				System.out.println("扫描到类【" + classMetadata.getClassName() + "】包含有@Res 注解！");
@@ -165,8 +180,8 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 				}
 
 				ar.addActionMethodOper(methodName, operName, operSn, operIndex);
-//				resourceDao.save(ar);
-				
+				// resourceDao.save(ar);
+
 				System.out.println("扫描到操作【" + operSn + "(" + operName + ")】【" + operIndex + "】:" + methodName);
 
 				// 如果有父类，而且不是 java.lang.Object ,则继续搜索这个父类当中是否还包含 @Oper 注解的方法
@@ -231,6 +246,85 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 			return "删除";
 		}
 		return "查询";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#findAllTopActionResources()
+	 */
+	@Override
+	public List<ActionResource> findAllTopActionResources() {
+		// TODO Auto-generated method stub
+		return resourceDao.findAllTopActionResources();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#addActionResource(com.aoeng.oa.model.ActionResource)
+	 */
+	@Override
+	public void addActionResource(ActionResource actionResource) {
+		// TODO Auto-generated method stub
+		resourceDao.save(actionResource);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#findActionResourceById(int)
+	 */
+	@Override
+	public ActionResource findActionResourceById(int sn) {
+		// TODO Auto-generated method stub
+		return resourceDao.findById(ActionResource.class, sn);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#updateActionResource(com.aoeng.oa.model.ActionResource)
+	 */
+	@Override
+	public void updateActionResource(ActionResource actionResource) {
+		// TODO Auto-generated method stub
+		resourceDao.update(actionResource);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#delActionResource(int)
+	 */
+	@Override
+	public void delActionResource(int sn) {
+		// TODO Auto-generated method stub
+		resourceDao.del(resourceDao.findById(ActionResource.class, sn));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#addActionResourceOper(int, com.aoeng.oa.model.ActionMethodOper)
+	 */
+	@Override
+	public void addActionResourceOper(int sn, ActionMethodOper oper) {
+		// TODO Auto-generated method stub
+		ActionResource ar = resourceDao.findById(ActionResource.class, sn);
+		ar.addActionMethodOper(oper.getMethodName(), oper.getOperName(), oper.getOperSn(), oper.getOperIndex());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#delActionResourceOper(int, java.lang.String)
+	 */
+	@Override
+	public void delActionResourceOper(int sn, String operSn) {
+		// TODO Auto-generated method stub
+		ActionResource ar = resourceDao.findById(ActionResource.class, sn);
+		ar.getOpers().remove(operSn);
 	}
 
 }

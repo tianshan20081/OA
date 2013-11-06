@@ -42,12 +42,12 @@ public class CompanyAction extends PartyAction implements ModelDriven {
 	 * 
 	 * @return
 	 */
-	@Oper
+	@Oper(name="公司信息维护",index=4,sn="saveCompany")
 	public String saveInput() {
 		model = partyService.findCurrentCompany();
 		return "company_input";
 	}
-	@Oper
+	@Oper(name="公司信息维护",index=4,sn="saveCompany")
 	public String save() {
 		partyService.saveOrUpdateCompany((Company) model);
 		return "add_success";
