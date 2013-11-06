@@ -9,6 +9,7 @@ import java.util.Map;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.model.Person;
 import com.aoeng.oa.utils.JsonUtils;
 import com.aoeng.oa.vo.PagerVo;
@@ -20,6 +21,7 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("personAction")
 @Scope("prototype")
+@Res(name="员工操作",sn="person",orderNumber=5,parentSn="party")
 public class PersonAction extends PartyAction implements ModelDriven {
 	private String sSearch ;
 	

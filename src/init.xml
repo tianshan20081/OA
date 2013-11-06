@@ -174,4 +174,6 @@
 			<entity class="Menu" name="查询已有知识" orderNumber="722" display="true" />
 		</entity>
 	</entity>
+	
+	<entity class="ActionResource" name="权限操作" orderNumber="10" sn="security" call="resourceService.addActionResource"/>
 </init>

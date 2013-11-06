@@ -11,6 +11,8 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.aoeng.oa.annotations.Oper;
+import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.model.Role;
 import com.aoeng.oa.service.RoleService;
 import com.aoeng.oa.utils.JsonUtils;
@@ -23,6 +25,7 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("roleAction")
 @Scope("prototype")
+@Res(name = "角色操作", sn = "role", parentSn = "security", orderNumber = 6)
 public class RoleAction implements ModelDriven {
 	private Role model;
 
@@ -74,29 +77,34 @@ public class RoleAction implements ModelDriven {
 
 		JsonUtils.toJson(map);
 	}
-
+	@Oper
 	public String execute() {
 		return "index";
 	}
 
+	@Oper
 	public String addInput() {
 		return "add_input";
 	}
 
+	@Oper
 	public void del() {
 		roleService.delRoleById(model.getId());
 	}
 
+	@Oper
 	public String add() {
 		roleService.addRole(model);
 		return "add_success";
 	}
 
+	@Oper
 	public String updateInput() {
 		model = roleService.findRoleById(model.getId());
 		return "update_input";
 	}
 
+	@Oper
 	public String update() {
 		roleService.updateRole(model);
 		return "update_success";

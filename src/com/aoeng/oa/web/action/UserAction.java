@@ -12,6 +12,8 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.aoeng.oa.annotations.Oper;
+import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.model.Role;
 import com.aoeng.oa.model.User;
 import com.aoeng.oa.service.RoleService;
@@ -27,6 +29,7 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("userAction")
 @Scope("prototype")
+@Res(name = "用户操作", orderNumber = 7, sn = "user", parentSn = "security")
 public class UserAction implements ModelDriven {
 	private User model;
 	private String sSearch;
@@ -36,7 +39,6 @@ public class UserAction implements ModelDriven {
 	@Resource
 	private RoleService roleService;
 
-
 	/**
 	 * @return the roleIds
 	 */
@@ -45,15 +47,16 @@ public class UserAction implements ModelDriven {
 	}
 
 	/**
-	 * @param roleIds the roleIds to set
+	 * @param roleIds
+	 *            the roleIds to set
 	 */
 	public void setRoleIds(int[] roleIds) {
 		this.roleIds = roleIds;
 	}
 
-
 	/**
-	 * @param sSearch the sSearch to set
+	 * @param sSearch
+	 *            the sSearch to set
 	 */
 	public void setSSearch(String sSearch) {
 		this.sSearch = sSearch;
@@ -73,6 +76,7 @@ public class UserAction implements ModelDriven {
 		return model;
 	}
 
+	@Oper
 	public String execute() {
 		return "index";
 	}
@@ -87,12 +91,14 @@ public class UserAction implements ModelDriven {
 		JsonUtils.toJson(map);
 	}
 
+	@Oper
 	public String addInput() {
 		List<Role> roles = roleService.findAllRoles();
 		ActionContext.getContext().put("roles", roles);
 		return "add_input";
 	}
 
+	@Oper
 	public String add() {
 		userService.addUser(model, roleIds);
 		return "add_success";
@@ -101,6 +107,7 @@ public class UserAction implements ModelDriven {
 	/**
 	 * 删除人员之后还在本页面，故不许要返回
 	 */
+	@Oper
 	public void del() {
 		userService.delUser(model.getId());
 		// return "del_success";
@@ -111,6 +118,7 @@ public class UserAction implements ModelDriven {
 	 * 
 	 * @return
 	 */
+	@Oper
 	public String updateInput() {
 		model = userService.findUserById(model.getId());
 		// 查询所用的角色
@@ -127,6 +135,7 @@ public class UserAction implements ModelDriven {
 	 * 
 	 * @return
 	 */
+	@Oper
 	public String update() {
 		userService.updateUser(model, roleIds);
 		return "update_success";

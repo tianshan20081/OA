@@ -36,13 +36,13 @@ public @interface Res {
 	 * 
 	 * @return
 	 */
-	int orderNumber();
+	int orderNumber() default 0;
 
 	/**
 	 * 父资源的唯一标识
 	 * 
 	 * @return
 	 */
-	String parentSn();
+	String parentSn() default "";
 
 }

@@ -22,19 +22,19 @@ public @interface Oper {
 	 * 
 	 * @return
 	 */
-	String name();
+	String name() default "";
 
 	/**
 	 * 操作的唯一标识，如果不定义，自动根据方法名称赋予一个默认值，规则如下 eg:add CREATE ; update UPDATE ; del DELETE; 其他方法 READ
 	 * 
 	 * @return
 	 */
-	String sn();
+	String sn() default "";
 
 	/**
 	 * 操作对应的索引，如果不定义，自动根据方法名赋予一个默认值，规则如下 eg:add开头的方法 自动给一个索引值 0; update 1 ； del 2 ; 其他 3 .
 	 * 
 	 * @return
 	 */
-	int index();
+	int index() default -1;
 }

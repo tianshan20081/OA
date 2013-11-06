@@ -13,6 +13,8 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.aoeng.oa.annotations.Oper;
+import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.model.Menu;
 import com.aoeng.oa.service.MenuService;
 import com.aoeng.oa.utils.JsonUtils;
@@ -26,6 +28,7 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("menuAction")
 @Scope("prototype")
+@Res(name = "菜单操作", sn = "menu", parentSn = "security", orderNumber = 8)
 public class MenuAction implements ModelDriven {
 	private Menu model;
 	private String sSearch;
@@ -73,10 +76,12 @@ public class MenuAction implements ModelDriven {
 		JsonUtils.toJson(vos);
 	}
 
+	@Oper
 	public String execute() {
 		return "index";
 	}
 
+	@Oper
 	public String addInput() {
 		int parentId = model.getParent().getId();
 		if (parentId == 0) {
@@ -85,21 +90,25 @@ public class MenuAction implements ModelDriven {
 		return "add_input";
 	}
 
+	@Oper
 	public String add() {
 		menuService.addMenu(model);
 		return "add_success";
 	}
 
+	@Oper
 	public String updateInput() {
 		model = menuService.findMenuById(model.getId());
 		return "update_input";
 	}
 
+	@Oper
 	public String update() {
 		menuService.updateMenu(model);
 		return "update_success";
 	}
 
+	@Oper
 	public String del() {
 		menuService.delMenuById(model.getId());
 		return "del_success";
