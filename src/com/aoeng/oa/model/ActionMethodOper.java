@@ -3,6 +3,9 @@
  */
 package com.aoeng.oa.model;
 
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Nov 5, 20137:51:43 PM
  * 
@@ -23,55 +26,78 @@ public class ActionMethodOper {
 	/**
 	 * 操作的名称
 	 */
-	private String operName ;
+	private String operName;
+
+
+
+	public void addMethodName(String methodName) {
+		if (!StringUtils.isEmpty(methodName)) {
+			this.methodName = methodName;
+		} else {
+			String[] methodNames = this.methodName.split("\\|");
+			if (!ArrayUtils.contains(methodNames, methodName)) {
+				this.methodName += "|" + methodName;
+			}
+		}
+	}
 	/**
 	 * @return the operSn
 	 */
 	public String getOperSn() {
 		return operSn;
 	}
+
 	/**
-	 * @param operSn the operSn to set
+	 * @param operSn
+	 *            the operSn to set
 	 */
 	public void setOperSn(String operSn) {
 		this.operSn = operSn;
 	}
+
 	/**
 	 * @return the operIndex
 	 */
 	public int getOperIndex() {
 		return operIndex;
 	}
+
 	/**
-	 * @param operIndex the operIndex to set
+	 * @param operIndex
+	 *            the operIndex to set
 	 */
 	public void setOperIndex(int operIndex) {
 		this.operIndex = operIndex;
 	}
+
 	/**
 	 * @return the methodName
 	 */
 	public String getMethodName() {
 		return methodName;
 	}
+
 	/**
-	 * @param methodName the methodName to set
+	 * @param methodName
+	 *            the methodName to set
 	 */
 	public void setMethodName(String methodName) {
 		this.methodName = methodName;
 	}
+
 	/**
 	 * @return the operName
 	 */
 	public String getOperName() {
 		return operName;
 	}
+
 	/**
-	 * @param operName the operName to set
+	 * @param operName
+	 *            the operName to set
 	 */
 	public void setOperName(String operName) {
 		this.operName = operName;
 	}
-	
-	
+
 }
