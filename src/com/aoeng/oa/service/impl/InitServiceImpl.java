@@ -21,6 +21,7 @@ import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Service;
 
 import com.aoeng.oa.service.InitService;
+import com.aoeng.oa.service.ResourceService;
 
 /**
  * Nov 1, 2013 3:20:02 PM
@@ -70,6 +71,10 @@ public class InitServiceImpl implements InitService, BeanFactoryAware {
 				Element e = (Element) iter.next();
 				addEntity(e, pkg, null, null);
 			}
+			
+			//重建所有的 ActionResource 资源
+			ResourceService resourceService = (ResourceService) beanFactory.getBean("resourceService");
+			resourceService.rebuildActionResource();
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -42,12 +42,12 @@ public class CompanyAction extends PartyAction implements ModelDriven {
 	 * 
 	 * @return
 	 */
-	@Oper(name="公司信息的维护",sn="saveCompany")
+	@Oper
 	public String saveInput() {
 		model = partyService.findCurrentCompany();
 		return "company_input";
 	}
-	@Oper(name="公司信息的维护",sn="saveCompany")
+	@Oper
 	public String save() {
 		partyService.saveOrUpdateCompany((Company) model);
 		return "add_success";

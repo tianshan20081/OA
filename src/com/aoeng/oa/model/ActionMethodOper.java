@@ -31,7 +31,7 @@ public class ActionMethodOper {
 
 
 	public void addMethodName(String methodName) {
-		if (!StringUtils.isEmpty(methodName)) {
+		if (StringUtils.isEmpty(this.methodName)) {
 			this.methodName = methodName;
 		} else {
 			String[] methodNames = this.methodName.split("\\|");

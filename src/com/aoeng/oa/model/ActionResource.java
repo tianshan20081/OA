@@ -32,7 +32,7 @@ public class ActionResource implements SysResource {
 	/**
 	 * 父资源的唯一标识
 	 */
-	private String parentSn ;
+	private String parentSn;
 	/**
 	 * 资源的排序号
 	 */
@@ -44,7 +44,7 @@ public class ActionResource implements SysResource {
 	/**
 	 * 父资源
 	 */
-	private ActionResource parent ;
+	private ActionResource parent;
 	/**
 	 * 子资源
 	 */
@@ -61,20 +61,22 @@ public class ActionResource implements SysResource {
 			// 判断 operIndex 是否已经存在，如果已经存在则抛出异常，操作索引不允许存在
 			for (ActionMethodOper o : opers.values()) {
 				if (o.getOperIndex() == operIndex) {
-					throw new RuntimeException("针对资源【" + name + "】的操作【" + o.getOperName() + "】已经和索引【" + o.getOperIndex() + "】绑定了，无法把操作【" + operName + "】再次绑定到相同的索引");
+					throw new RuntimeException("针对资源【" + name + "】的操作【" + o.getOperName() + "】已经和索引【"
+							+ o.getOperIndex() + "】绑定了，无法把操作【" + operName + "】再次绑定到相同的索引");
 				}
-				amo = new ActionMethodOper();
-				amo.setMethodName(methodName);
-				amo.setOperIndex(operIndex);
-				amo.setOperName(operName);
-				amo.setOperSn(operSn);
-				opers.put(operSn, amo);
 			}
+			amo = new ActionMethodOper();
+			amo.setMethodName(methodName);
+			amo.setOperIndex(operIndex);
+			amo.setOperName(operName);
+			amo.setOperSn(operSn);
+			opers.put(operSn, amo);
+
 		}
 	}
 
 	public void addClassName(String className) {
-		if (StringUtils.isEmpty(className)) {
+		if (StringUtils.isEmpty(this.className)) {
 			this.className = className;
 		} else {
 			String[] classNames = this.className.split("\\|");
@@ -84,8 +86,6 @@ public class ActionResource implements SysResource {
 		}
 	}
 
-	
-	
 	/**
 	 * @return the parentSn
 	 */
@@ -94,7 +94,8 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param parentSn the parentSn to set
+	 * @param parentSn
+	 *            the parentSn to set
 	 */
 	public void setParentSn(String parentSn) {
 		this.parentSn = parentSn;
@@ -115,7 +116,8 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -129,7 +131,8 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param sn the sn to set
+	 * @param sn
+	 *            the sn to set
 	 */
 	public void setSn(String sn) {
 		this.sn = sn;
@@ -143,7 +146,8 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param orderNumber the orderNumber to set
+	 * @param orderNumber
+	 *            the orderNumber to set
 	 */
 	public void setOrderNumber(int orderNumber) {
 		this.orderNumber = orderNumber;
@@ -157,7 +161,8 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param opers the opers to set
+	 * @param opers
+	 *            the opers to set
 	 */
 	public void setOpers(Map<String, ActionMethodOper> opers) {
 		this.opers = opers;
@@ -171,14 +176,16 @@ public class ActionResource implements SysResource {
 	}
 
 	/**
-	 * @param parent the parent to set
+	 * @param parent
+	 *            the parent to set
 	 */
 	public void setParent(ActionResource parent) {
 		this.parent = parent;
 	}
 
 	/**
-	 * @param children the children to set
+	 * @param children
+	 *            the children to set
 	 */
 	public void setChildren(Set<ActionResource> children) {
 		this.children = children;
