@@ -54,4 +54,11 @@ public interface MenuService {
 	 */
 	void addMenu(Menu menu);
 
+
+
+	/**
+	 * @return
+	 */
+	List<Integer> findAllTopMenuIds();
+
 }

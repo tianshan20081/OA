@@ -31,4 +31,14 @@ public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
 		return getSession().createQuery(hql).list();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.dao.MenuDao#findAllTopMenuIds()
+	 */
+	@Override
+	public List<Integer> findAllTopMenuIds() {
+		// TODO Auto-generated method stub
+		String hql = "select m.id from Menu m where m.parent is null ";
+		return getSession().createQuery(hql).list();
+	}
+
 }

@@ -69,5 +69,14 @@ public class MenuServiceImpl implements MenuService{
 		return menuDao.findAllTopMenus();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.service.MenuService#findAllTopMenuIds()
+	 */
+	@Override
+	public List<Integer> findAllTopMenuIds() {
+		// TODO Auto-generated method stub
+		return menuDao.findAllTopMenuIds();
+	}
+
 
 }

@@ -17,6 +17,57 @@ public class ACL {
 	private int aclState;
 	private int aclTriState;
 
+	public void setPermission(int index, boolean isPermit, boolean isExtend) {
+		if (index < 0 || index > 31) {
+			throw new RuntimeException("操作索引值有误,必须在0-31 之间的值！");
+		}
+		// 第 index 位如果是 继承 设置为 1 ，否则设置成 0
+		aclTriState = setBit(aclTriState, index, isExtend);
+		aclState = setBit(aclState, index, isPermit);
+	}
+	public boolean isExtend(int index){
+		return getBit(aclTriState, index);
+	}
+	public boolean isPermit(int index){
+		return getBit(aclState,index);
+	}
+
+	/**
+	 * @param aclState2
+	 * @param index
+	 * @return
+	 */
+	private boolean getBit(int i, int index) {
+		// TODO Auto-generated method stub
+		int temp = 1 ;
+		temp = temp << index ;
+		temp = i & temp ;
+		if (temp == 0) {
+			return false ;
+		}
+		return true;
+	}
+	/**
+	 * 000000000000000000...0000000000000000
+	 * 
+	 * @param isExtend
+	 * @param index
+	 * @param aclTriState
+	 * @return
+	 */
+	private int setBit(int i, int index, boolean value) {
+		// TODO Auto-generated method stub
+		int temp = 1;
+		temp = temp << index;
+		if (value) {
+			i = i | temp;
+		} else {
+			temp = ~temp;// 按位取反
+			i = i & temp;
+		}
+		return i;
+	}
+
 	/**
 	 * @return the id
 	 */

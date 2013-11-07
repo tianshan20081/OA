@@ -17,6 +17,11 @@ public interface MenuDao extends BaseDao {
 	 * @return
 	 */
 	List<Menu> findAllTopMenus();
+
+	/**
+	 * @return
+	 */
+	List<Integer> findAllTopMenuIds();
 	
 
 }

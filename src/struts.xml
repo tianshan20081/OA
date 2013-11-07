@@ -52,5 +52,11 @@
 			<result name="del_success">/org/resource/del_success.jsp</result>
 			<result name="oper_input">/org/resource/oper_input.jsp</result>
 		</action>
+		<action name="acl" class="aclAction">
+			<result name="role_auth_index">/org/acl/role_auth_index.jsp</result>
+			<result name="user_auth_index">/org/acl/user_auth_index.jsp</result>
+			<result name="party_auth_index">/org/acl/party_auth_index.jsp</result>
+			<result name="all_menu_resource">/org/acl/all_menu_resource.jsp</result>
+		</action>
 	</package>
 </struts>
