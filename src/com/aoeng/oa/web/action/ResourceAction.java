@@ -109,7 +109,7 @@ public class ResourceAction implements ModelDriven {
 		return "del_success";
 	}
 	
-	public String oprInput(){
+	public String operInput(){
 		return "oper_input";
 	}
 	public String addOper(){
