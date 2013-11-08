@@ -3,6 +3,7 @@
  */
 package com.aoeng.oa.web.action;
 
+import java.security.acl.Acl;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.aoeng.oa.model.ACL;
 import com.aoeng.oa.model.Menu;
 import com.aoeng.oa.model.Role;
 import com.aoeng.oa.service.AclService;
@@ -194,4 +196,22 @@ public class AclAction {
 	public void authMenu() {
 		aclService.addOrUpdatePermission(principalType,principalId,"Menu",authVos);
 	}
+	/**
+	 * 把所有授权查询出来，并且显示在已有的菜单树当中
+	 */
+	public void findMenuAcls(){
+		List<ACL> acls = aclService.findAclList(principalType,principalId,"Menu");
+		List<AuthVo> vos = new ArrayList<AuthVo>();
+		for (ACL acl : acls) {
+			AuthVo vo = new AuthVo();
+			vo.setResourceId(acl.getResourceId());
+			vo.setOperIndex(0);
+			vo.setPermit(acl.isPermit(0));
+			vo.setExtend(acl.isExtend(0));
+			
+			vos.add(vo);
+		}
+		JsonUtils.toJson(vos);
+	}
+	
 }

@@ -3,8 +3,10 @@
  */
 package com.aoeng.oa.service;
 
+import java.security.acl.Acl;
 import java.util.List;
 
+import com.aoeng.oa.model.ACL;
 import com.aoeng.oa.vo.AuthVo;
 
 /**
@@ -20,5 +22,13 @@ public interface AclService {
 	 * @param authVos
 	 */
 	void addOrUpdatePermission(String principalType, int principalId, String string, List<AuthVo> authVos);
+
+	/**
+	 * @param principalType
+	 * @param principalId
+	 * @param string
+	 * @return
+	 */
+	List<ACL> findAclList(String principalType, int principalId, String string);
 
 }

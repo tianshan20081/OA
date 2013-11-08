@@ -3,6 +3,7 @@
  */
 package com.aoeng.oa.service.impl;
 
+import java.security.acl.Acl;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -57,6 +58,15 @@ public class AclServiceImpl implements AclService {
 			}
 		}
 
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.service.AclService#findAclList(java.lang.String, int, java.lang.String)
+	 */
+	@Override
+	public List<ACL> findAclList(String principalType, int principalId, String resourceType) {
+		// TODO Auto-generated method stub
+		return aclDao.findAclList(principalType,principalId,resourceType);
 	}
 
 }

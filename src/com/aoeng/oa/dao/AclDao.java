@@ -3,6 +3,9 @@
  */
 package com.aoeng.oa.dao;
 
+import java.security.acl.Acl;
+import java.util.List;
+
 import com.aoeng.oa.model.ACL;
 
 /**
@@ -26,5 +29,13 @@ public interface AclDao extends BaseDao{
 	 * @return 
 	 */
 	ACL findACL(String principalType, int principalId, String resourceType, int resourceId);
+
+	/**
+	 * @param principalType
+	 * @param principalId
+	 * @param resourceType
+	 * @return
+	 */
+	List<ACL> findAclList(String principalType, int principalId, String resourceType);
 
 }
