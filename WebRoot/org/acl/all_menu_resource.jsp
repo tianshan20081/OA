@@ -87,7 +87,7 @@
 			};
 		}
 		//将roleContainer变成一棵树！
-		$("#menuTree_<s:property/>")
+		$("#menuTree_<s:property />")
 				.jstree(
 						{
 							"json_data" : {
@@ -104,10 +104,10 @@
 							"plugins" : [ "themes", "json_data", "ui",
 									"aclcheckbox", "contextmenu" ]
 						});
-		$("#menuTree_<s:property/>").bind("loaded.jstree", function(event) {
-			$("#menuTree_<s:property/>").jstree("open_all", -1);
+		$("#menuTree_<s:property />").bind("loaded.jstree", function(event) {
+			$("#menuTree_<s:property />").jstree("open_all", -1);
 		});
-		$("#menuTree_<s:property/>").bind(
+		$("#menuTree_<s:property />").bind(
 				"select_node.jstree",
 				function(event, data) {
 					var principalId = data.rslt.obj.attr("id");
@@ -119,7 +119,7 @@
 									+ principalType);
 				});
 		</s:iterator>
-		$("#menuTree_<s:property/>").css("font-size", "12px")
+		$("#menuTree_<s:property />").css("font-size", "12px")
 	});
 	//给菜单授权
 	function auth() {
@@ -128,8 +128,7 @@
 	}
 	function getAllCheckedNodes() {
 		<s:iterator value="#topMenuIds">
-		var allChecked<s:property/> = $("menuTree_<s:property/>").jstree(
-				"get_all_auths_node");
+		var allChecked<s:property/> = $("#menuTree_<s:property />").jstree("get_all_auths_node");
 		alert(allChecked<s:property/>.length);
 		</s:iterator>
 	}
@@ -149,7 +148,17 @@ body {
 <body>
 	<table width="100%" height="100%" border="0" cellpadding="0">
 		<tr>
-			<td colspan='<s:property value="#topMenuIds.size()"/>'><a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">菜单授权</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">资源授权</a> <a href="javascript:auth();">保存授权</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部授权</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部允许</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部拒绝</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部取消</a> <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部继承</a>
+			<td colspan='<s:property value="#topMenuIds.size()"/>'>
+
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">菜单授权</a> 
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">资源授权</a>
+<a href="javascript:auth();">保存授权</a>
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部授权</a>
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部允许</a>
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部拒绝</a> 
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部取消</a>
+<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">全部继承</a>
+     
 				<hr /></td>
 		</tr>
 		<tr>
