@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/common/inc.jsp"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -11,7 +12,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'jstree01.jsp' starting page</title>
+<title>My JSP 'treetable01.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -22,35 +23,27 @@
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <script type="text/javascript" src="js/jquery-2.0.3.js"></script>
-<script type="text/javascript" src="js/jquery.jstree.js"></script>
-<script language="javascript">
-	$(function() {
-		//将menuContainer变成一棵树！
-		$("#demo").jstree({
-			"json_data" : {
-				"ajax":{
-					"url":"system/company!tree.action"
-				}
-			},
-			"plugins" : [ "themes", "json_data" ]
-		});
-
+<link href="js/tt/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+<script src="js/tt/jquery.treeTable.min.js"></script>
+<script type="text/javascript"  >
+$(document).ready(function()  {
+	  $("#your_table_id").treeTable({expandable:false});
 	});
 </script>
-<style type="text/css">
-<!--
-body {
-	margin-left: 0px;
-	margin-top: 0px;
-	margin-right: 0px;
-	margin-bottom: 0px;
-	font-size: 12px;
-}
--->
-</style>
 </head>
 
 <body>
-	<div id="demo"></div>
+	<table id="your_table_id">
+		<tr id="node-1">
+			<td>Parent</td>
+		</tr>
+		<tr id="node-2" class="child-of-node-1">
+			<td>Child</td>
+		</tr>
+		<tr id="node-3" class="child-of-node-2">
+			<td>Child</td>
+		</tr>
+	</table>
+
 </body>
 </html>
