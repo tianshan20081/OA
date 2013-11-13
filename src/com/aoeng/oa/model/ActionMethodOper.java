@@ -10,7 +10,8 @@ import org.apache.commons.lang3.StringUtils;
  * Nov 5, 20137:51:43 PM
  * 
  */
-public class ActionMethodOper {
+public class ActionMethodOper
+{
 	/**
 	 * 操作的唯一标识 eg:ADD，UPDATE，
 	 */
@@ -28,8 +29,6 @@ public class ActionMethodOper {
 	 */
 	private String operName;
 
-
-
 	public void addMethodName(String methodName) {
 		if (StringUtils.isEmpty(this.methodName)) {
 			this.methodName = methodName;
@@ -40,6 +39,7 @@ public class ActionMethodOper {
 			}
 		}
 	}
+
 	/**
 	 * @return the operSn
 	 */

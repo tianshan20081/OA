@@ -33,7 +33,8 @@ import com.aoeng.oa.model.ActionResource;
  * 
  */
 @Service("resourceService")
-public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService {
+public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
+{
 	Logger logger = Logger.getLogger(ResourceServiceImpl.class.getName());
 	@Resource
 	private ResourceDao resourceDao;
@@ -69,10 +70,10 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 				}
 
 			}
-			//建立父子关系
+			// 建立父子关系
 			List<ActionResource> resources = resourceDao.findAll(ActionResource.class);
 			for (ActionResource ar : resources) {
-				//根据 parentSn 判断是否存在 父资源
+				// 根据 parentSn 判断是否存在 父资源
 				String parentSn = ar.getParentSn();
 				if (!StringUtils.isEmpty(parentSn)) {
 					ActionResource parent = resourceDao.findActionResourceBySn(parentSn);
@@ -183,20 +184,18 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 				// resourceDao.save(ar);
 
 				System.out.println("扫描到操作【" + operSn + "(" + operName + ")】【" + operIndex + "】:" + methodName);
-
-				// 如果有父类，而且不是 java.lang.Object ,则继续搜索这个父类当中是否还包含 @Oper 注解的方法
-				if (metaReader.getClassMetadata().hasSuperClass()
-						&& !metaReader.getClassMetadata().getSuperClassName().equals(Object.class.getName())) {
-					// 得到父类得名称
-					String superClassName = metaReader.getClassMetadata().getSuperClassName();
-					// 构造父类资源路径
-					String superClassPath = superClassName.replace(".", "/") + ".class";
-					org.springframework.core.io.Resource superClassResource = resolver.getResource(superClassPath);
-					searchOperAnnotations(ar, metaFactory.getMetadataReader(superClassResource), metaFactory, resolver);
-
-				}
-
 			}
+		}
+		// 如果有父类，而且不是 java.lang.Object ,则继续搜索这个父类当中是否还包含 @Oper 注解的方法
+		if (metaReader.getClassMetadata().hasSuperClass()
+				&& !metaReader.getClassMetadata().getSuperClassName().equals(Object.class.getName())) {
+			// 得到父类得名称
+			String superClassName = metaReader.getClassMetadata().getSuperClassName();
+			// 构造父类资源路径
+			String superClassPath = superClassName.replace(".", "/") + ".class";
+			org.springframework.core.io.Resource superClassResource = resolver.getResource(superClassPath);
+			searchOperAnnotations(ar, metaFactory.getMetadataReader(superClassResource), metaFactory, resolver);
+
 		}
 	}
 
@@ -325,6 +324,17 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 		// TODO Auto-generated method stub
 		ActionResource ar = resourceDao.findById(ActionResource.class, sn);
 		ar.getOpers().remove(operSn);
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.ResourceService#findAllActionResource()
+	 */
+	@Override
+	public List<ActionResource> findAllActionResource() {
+		// TODO Auto-generated method stub
+		return resourceDao.findAllActionResource();
 	}
 
 }

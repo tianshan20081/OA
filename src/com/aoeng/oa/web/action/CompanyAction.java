@@ -3,11 +3,9 @@
  */
 package com.aoeng.oa.web.action;
 
-
 import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
 
 import com.aoeng.oa.annotations.Oper;
 import com.aoeng.oa.annotations.Res;
@@ -20,8 +18,9 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("companyAction")
 @Scope("prototype")
-@Res(name="公司操作",sn="company",orderNumber=2,parentSn="party" )
-public class CompanyAction extends PartyAction implements ModelDriven {
+@Res(name = "公司操作", sn = "company", orderNumber = 20, parentSn = "party")
+public class CompanyAction extends PartyAction implements ModelDriven
+{
 
 	/*
 	 * (non-Javadoc)
@@ -42,12 +41,13 @@ public class CompanyAction extends PartyAction implements ModelDriven {
 	 * 
 	 * @return
 	 */
-	@Oper(name="公司信息维护",index=4,sn="saveCompany")
+	@Oper(name = "公司信息维护", index = 4, sn = "saveCompany")
 	public String saveInput() {
 		model = partyService.findCurrentCompany();
 		return "company_input";
 	}
-	@Oper(name="公司信息维护",index=4,sn="saveCompany")
+
+	@Oper(name = "公司信息维护", index = 4, sn = "saveCompany")
 	public String save() {
 		partyService.saveOrUpdateCompany((Company) model);
 		return "add_success";

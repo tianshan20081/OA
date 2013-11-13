@@ -16,15 +16,17 @@ import com.aoeng.oa.vo.PagerVo;
 
 /**
  * Nov 5, 20135:20:37 PM
- *
+ * 
  */
 @Service("menuService")
-public class MenuServiceImpl implements MenuService{
+public class MenuServiceImpl implements MenuService
+{
 	@Resource
-	private MenuDao menuDao ;
+	private MenuDao menuDao;
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#save(com.aoeng.oa.model.Menu)
 	 */
 	@Override
@@ -33,7 +35,9 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.save(menu);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#findMenuById(int)
 	 */
 	@Override
@@ -42,7 +46,9 @@ public class MenuServiceImpl implements MenuService{
 		return menuDao.findById(Menu.class, menuId);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#update(com.aoeng.oa.model.Menu)
 	 */
 	@Override
@@ -51,7 +57,9 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.update(menu);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#delMenuById(int)
 	 */
 	@Override
@@ -60,7 +68,9 @@ public class MenuServiceImpl implements MenuService{
 		menuDao.del(findMenuById(menuId));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#findAllTopMenus()
 	 */
 	@Override
@@ -69,7 +79,9 @@ public class MenuServiceImpl implements MenuService{
 		return menuDao.findAllTopMenus();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.MenuService#findAllTopMenuIds()
 	 */
 	@Override
@@ -77,6 +89,5 @@ public class MenuServiceImpl implements MenuService{
 		// TODO Auto-generated method stub
 		return menuDao.findAllTopMenuIds();
 	}
-
 
 }

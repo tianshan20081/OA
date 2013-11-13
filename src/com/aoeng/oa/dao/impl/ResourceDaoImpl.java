@@ -19,7 +19,8 @@ import com.aoeng.oa.vo.PagerVo;
  * 
  */
 @Repository("resourceDao")
-public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
+public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao
+{
 
 	/*
 	 * (non-Javadoc)
@@ -45,7 +46,9 @@ public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
 		return getSession().createQuery(hql).list();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.dao.ResourceDao#update(com.aoeng.oa.model.ActionResource)
 	 */
 	@Override
@@ -53,9 +56,21 @@ public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
 		// TODO Auto-generated method stub
 		ActionResource old = (ActionResource) getSession().load(ActionResource.class, ar.getId());
 		ar.setOpers(old.getOpers());
-		//注意此处不能用 update  
+		// 注意此处不能用 update
 		getSession().merge(ar);
-		
+
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.dao.ResourceDao#findAllActionResource()
+	 */
+	@Override
+	public List<ActionResource> findAllActionResource() {
+		// TODO Auto-generated method stub
+		String hrl = "select ar from ActionResource ar order by orderNumber ";
+		return getSession().createQuery(hrl).list();
 	}
 
 }

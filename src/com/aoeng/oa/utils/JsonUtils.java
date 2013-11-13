@@ -12,7 +12,8 @@ import com.sdicons.json.mapper.MapperException;
  * Oct 31, 2013 3:12:53 PM
  * 
  */
-public class JsonUtils {
+public class JsonUtils
+{
 
 	public static void toJson(Object obj) {
 		try {

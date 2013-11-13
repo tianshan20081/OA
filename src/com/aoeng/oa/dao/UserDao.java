@@ -12,7 +12,8 @@ import com.aoeng.oa.vo.PagerVo;
  * Nov 5, 20139:46:20 AM
  * 
  */
-public interface UserDao extends BaseDao{
+public interface UserDao extends BaseDao
+{
 
 	/**
 	 * 查找所有用户
@@ -33,5 +34,10 @@ public interface UserDao extends BaseDao{
 	 * @return
 	 */
 	List<Integer> findRoleIdsOfUser(int userId);
+
+	/**
+	 * @param sSearch
+	 */
+	List findPersonWithUsers(String personName);
 
 }

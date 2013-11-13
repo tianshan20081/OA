@@ -19,18 +19,21 @@ import com.opensymphony.xwork2.ModelDriven;
 
 /**
  * Oct 31, 2013 2:44:15 PM
- *
+ * 
  */
 @Controller("partyAction")
 @Scope("prototype")
-@Res(name="组织机构操作",sn="party")
-public class PartyAction implements ModelDriven {
-	
+@Res(name = "组织机构操作", sn = "party",orderNumber=10)
+public class PartyAction implements ModelDriven
+{
+
 	protected Party model;
 	@Resource
-	protected PartyService partyService ;
+	protected PartyService partyService;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.opensymphony.xwork2.ModelDriven#getModel()
 	 */
 	@Override
@@ -41,50 +44,58 @@ public class PartyAction implements ModelDriven {
 		}
 		return model;
 	}
+
 	/**
 	 * 打开部门、岗位设置得主界面
+	 * 
 	 * @return
 	 */
 	@Oper
-	public String execute(){
-		
+	public String execute() {
+
 		return "index";
 	}
-	//生成主界面上的 属性结构
-	public void tree(){
-		//查找顶层的公司
+
+	// 生成主界面上的 属性结构
+	public void tree() {
+		// 查找顶层的公司
 		Company c = partyService.findCurrentCompany();
 		PartyTreeVo partyTreeVo = new PartyTreeVo(c);
 		JsonUtils.toJson(partyTreeVo);
 	}
+
 	@Oper
-	public String updateInput(){
+	public String updateInput() {
 		model = partyService.findPartyById(model.getId());
 		System.out.println(model.toString());
 		return "update_input";
 	}
+
 	@Oper
-	public String update(){
+	public String update() {
 		System.out.println(model.getId());
 		partyService.updateParty(model);
 		return "update_success";
 	}
+
 	@Oper
-	public String del(){
+	public String del() {
 		partyService.delParty(model.getId());
 		return "del_success";
 	}
+
 	@Oper
-	public String addInput(){
-		//添加的 一定是 子 party,页面传过来的有 parentId
+	public String addInput() {
+		// 添加的 一定是 子 party,页面传过来的有 parentId
 		int parentId = model.getParent().getId();
-		if (parentId == 0 ) {
+		if (parentId == 0) {
 			throw new RuntimeException("未知父节点,无法创建自节点");
 		}
 		return "add_input";
 	}
+
 	@Oper
-	public String add(){
+	public String add() {
 		partyService.addParty(model);
 		return "add_success";
 	}

@@ -197,7 +197,7 @@
 		}
 		// var url = "system/acl!XXX.action"+param  为 get 方法 大小限制位 1 K
 		var url = "system/acl!authMenu.action";
-		//	alert(param);
+		//alert(param);
 		$.post(url, param, function()
 		{
 			alert("已经授权完毕！");//回调函数
@@ -252,14 +252,14 @@ body {
 	<table width="100%" height="100%" border="0" cellpadding="0">
 		<tr>
 <td colspan='<s:property value="#topMenuIds.size()"/>'>
-<a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">菜单授权</a>
- <a href="system/acl!allMenuResource.action?principalId=$(princaipalId)&principalType=$(principalType)">资源授权</a> 
+ <a href="system/acl!allMenuResource.action?principalId=${principalId}&principalType=${principalType}">菜单授权</a>
+ <a href="system/acl!allActionResource.action?principalId=${principalId}&principalType=${principalType }">资源授权</a> 
  |
  <a href="javascript:auth();">保存授权</a> 
  <a href="javascript:permitAll();">全部允许</a>
-  <a href="javascript:denyAll();">全部拒绝</a> 
-  <a href="javascript:cancelAll();">全部取消</a>
-   <a href="javascript:extendsAll();">全部继承</a>
+ <a href="javascript:denyAll();">全部拒绝</a> 
+ <a href="javascript:cancelAll();">全部取消</a>
+ <a href="javascript:extendsAll();">全部继承</a>
 
 				<hr />
 			</td>

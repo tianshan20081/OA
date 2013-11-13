@@ -5,6 +5,7 @@ package com.aoeng.oa.model;
 
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -15,7 +16,8 @@ import org.apache.commons.lang3.StringUtils;
  * Nov 4, 20137:26:40 PM
  * 
  */
-public class ActionResource implements SysResource {
+public class ActionResource implements SysResource
+{
 	private int id;
 	/**
 	 * 资源组织机构名称
@@ -219,6 +221,42 @@ public class ActionResource implements SysResource {
 	 */
 	public void setClassName(String className) {
 		this.className = className;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getResourceId()
+	 */
+	@Override
+	public int getResourceId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getOperIndex()
+	 */
+	@Override
+	public int[] getOperIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getResourceType()
+	 */
+	@Override
+	public String getResourceType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getChildrenResource()
+	 */
+	@Override
+	public List<SysResource> getChildrenResource() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

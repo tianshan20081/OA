@@ -175,5 +175,5 @@
 		</entity>
 	</entity>
 	
-	<entity class="ActionResource" name="权限操作" orderNumber="10" sn="security" call="resourceService.addActionResource"/>
+	<entity class="ActionResource" name="权限操作" orderNumber="60" sn="security" call="resourceService.addActionResource"/>
 </init>

@@ -28,8 +28,9 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("menuAction")
 @Scope("prototype")
-@Res(name = "菜单操作", sn = "menu", parentSn = "security", orderNumber = 8)
-public class MenuAction implements ModelDriven {
+@Res(name = "菜单操作", sn = "menu", parentSn = "security", orderNumber = 90)
+public class MenuAction implements ModelDriven
+{
 	private Menu model;
 	private String sSearch;
 	@Resource

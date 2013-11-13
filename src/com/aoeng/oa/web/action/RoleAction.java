@@ -25,8 +25,9 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("roleAction")
 @Scope("prototype")
-@Res(name = "角色操作", sn = "role", parentSn = "security", orderNumber = 6)
-public class RoleAction implements ModelDriven {
+@Res(name = "角色操作", sn = "role", parentSn = "security", orderNumber = 80)
+public class RoleAction implements ModelDriven
+{
 	private Role model;
 
 	private String sSearch;
@@ -77,6 +78,7 @@ public class RoleAction implements ModelDriven {
 
 		JsonUtils.toJson(map);
 	}
+
 	@Oper
 	public String execute() {
 		return "index";

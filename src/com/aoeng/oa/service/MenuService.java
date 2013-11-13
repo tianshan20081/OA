@@ -12,9 +12,8 @@ import com.aoeng.oa.vo.PagerVo;
  * Nov 5, 20135:20:25 PM
  * 
  */
-public interface MenuService {
-
-	
+public interface MenuService
+{
 
 	/**
 	 * 根据id 查找 菜单
@@ -23,8 +22,6 @@ public interface MenuService {
 	 * @return
 	 */
 	Menu findMenuById(int menuId);
-
-	
 
 	/**
 	 * 根據 id 刪除 菜單
@@ -53,8 +50,6 @@ public interface MenuService {
 	 * @param model
 	 */
 	void addMenu(Menu menu);
-
-
 
 	/**
 	 * @return

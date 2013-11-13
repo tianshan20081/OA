@@ -12,7 +12,8 @@ import com.aoeng.oa.model.ActionResource;
  * Nov 6, 20132:01:13 PM
  * 
  */
-public interface ResourceService {
+public interface ResourceService
+{
 	/**
 	 * 重建 ActionResource 资源对象
 	 */
@@ -69,5 +70,10 @@ public interface ResourceService {
 	 * @param operSn
 	 */
 	public void delActionResourceOper(int id, String operSn);
+
+	/**
+	 * @return
+	 */
+	public List<ActionResource> findAllActionResource();
 
 }

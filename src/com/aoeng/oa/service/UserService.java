@@ -12,7 +12,8 @@ import com.aoeng.oa.vo.PagerVo;
  * Nov 5, 20138:58:31 AM
  * 
  */
-public interface UserService {
+public interface UserService
+{
 
 	/**
 	 * 查找用戶
@@ -78,5 +79,10 @@ public interface UserService {
 	 * @return
 	 */
 	List<Integer> findRoleIdsOfUser(int userId);
+
+	/**
+	 * @param sSearch
+	 */
+	List findPersonWithUsers(String sSearch);
 
 }

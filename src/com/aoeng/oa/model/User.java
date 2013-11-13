@@ -10,12 +10,14 @@ import java.util.Set;
  * Nov 4, 20137:16:59 PM
  * 
  */
-public class User implements Principal {
+public class User implements Principal
+{
 	private int id;
 	private String username;
 	private String password;
 	private Person person;
-	private Set<UserRoles> userRoles = new HashSet<UserRoles>(); 
+	private Set<UserRoles> userRoles = new HashSet<UserRoles>();
+
 	/**
 	 * @return the userRoles
 	 */

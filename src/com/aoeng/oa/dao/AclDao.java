@@ -7,12 +7,14 @@ import java.security.acl.Acl;
 import java.util.List;
 
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.SysResource;
 
 /**
  * Nov 7, 20133:38:29 PM
- *
+ * 
  */
-public interface AclDao extends BaseDao{
+public interface AclDao extends BaseDao
+{
 
 	/**
 	 * @param principalType
@@ -26,7 +28,7 @@ public interface AclDao extends BaseDao{
 	 * @param principalId
 	 * @param resourceType
 	 * @param resourceId
-	 * @return 
+	 * @return
 	 */
 	ACL findACL(String principalType, int principalId, String resourceType, int resourceId);
 
@@ -37,5 +39,11 @@ public interface AclDao extends BaseDao{
 	 * @return
 	 */
 	List<ACL> findAclList(String principalType, int principalId, String resourceType);
+
+	/**
+	 * @param resourceType
+	 * @return
+	 */
+	List<SysResource> findAllSysResources(String resourceType);
 
 }

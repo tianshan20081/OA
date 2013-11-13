@@ -29,8 +29,9 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("userAction")
 @Scope("prototype")
-@Res(name = "用户操作", orderNumber = 7, sn = "user", parentSn = "security")
-public class UserAction implements ModelDriven {
+@Res(name = "用户操作", orderNumber = 70, sn = "user", parentSn = "security")
+public class UserAction implements ModelDriven
+{
 	private User model;
 	private String sSearch;
 	private int[] roleIds;

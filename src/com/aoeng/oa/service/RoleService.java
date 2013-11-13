@@ -12,7 +12,8 @@ import com.aoeng.oa.vo.PagerVo;
  * Nov 5, 20139:15:05 AM
  * 
  */
-public interface RoleService {
+public interface RoleService
+{
 
 	/**
 	 * 查找所有的角色

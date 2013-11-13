@@ -27,8 +27,9 @@ import com.opensymphony.xwork2.ModelDriven;
  */
 @Controller("resourceAction")
 @Scope("prototype")
-@Res(name = "资源操作", sn = "resource", orderNumber = 11, parentSn = "security")
-public class ResourceAction implements ModelDriven {
+@Res(name = "资源操作", sn = "resource", orderNumber = 100, parentSn = "security")
+public class ResourceAction implements ModelDriven
+{
 	@Resource
 	private ResourceService resourceService;
 	private ActionResource model;
@@ -108,22 +109,23 @@ public class ResourceAction implements ModelDriven {
 		resourceService.delActionResource(model.getId());
 		return "del_success";
 	}
-	
-	public String operInput(){
+
+	public String operInput() {
 		return "oper_input";
 	}
-	public String addOper(){
+
+	public String addOper() {
 		ActionMethodOper oper = new ActionMethodOper();
 		oper.setMethodName(methodName);
 		oper.setOperIndex(operIndex);
 		oper.setOperName(operName);
 		oper.setOperSn(operSn);
-		resourceService.addActionResourceOper(model.getId(),oper);
+		resourceService.addActionResourceOper(model.getId(), oper);
 		return "add_success";
 	}
-	
-	public void delOper(){
-		resourceService.delActionResourceOper(model.getId(),operSn);
+
+	public void delOper() {
+		resourceService.delActionResourceOper(model.getId(), operSn);
 	}
 
 	/**

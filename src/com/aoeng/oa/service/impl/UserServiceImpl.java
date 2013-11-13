@@ -24,7 +24,8 @@ import com.aoeng.oa.vo.PagerVo;
  * 
  */
 @Service("userService")
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService
+{
 	@Resource
 	private UserDao userDao;
 	@Resource
@@ -101,7 +102,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void updateUser(User user, int[] roleIds) {
 		// TODO Auto-generated method stub
-		userDao.update(user,roleIds);
+		userDao.update(user, roleIds);
 	}
 
 	/*
@@ -115,7 +116,9 @@ public class UserServiceImpl implements UserService {
 		userDao.update(user);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.UserService#findById(int)
 	 */
 	@Override
@@ -124,7 +127,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.findById(User.class, id);
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.UserService#findRoleIdsOfUser(int)
 	 */
 	@Override
@@ -133,5 +138,13 @@ public class UserServiceImpl implements UserService {
 		return userDao.findRoleIdsOfUser(id);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.service.UserService#findPersonWithUsers(java.lang.String)
+	 */
+	@Override
+	public List findPersonWithUsers(String sSearch) {
+		// TODO Auto-generated method stub
+		return userDao.findPersonWithUsers(sSearch);
+	}
 
 }

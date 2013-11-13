@@ -3,22 +3,24 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.List;
 import java.util.Set;
 
 /**
  * Nov 4, 20137:18:17 PM
  * 
  */
-public class Menu implements SysResource {
+public class Menu implements SysResource
+{
 	private int id;
 	private String name;
 	private String href;
 	private int orderNumber;
 	private String sn;
 	private boolean display;
-	
+
 	private Menu parent;
-	
+
 	private Set<Menu> children;
 
 	/**
@@ -29,7 +31,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(int id) {
 		this.id = id;
@@ -43,7 +46,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -57,7 +61,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param href the href to set
+	 * @param href
+	 *            the href to set
 	 */
 	public void setHref(String href) {
 		this.href = href;
@@ -71,7 +76,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param orderNumber the orderNumber to set
+	 * @param orderNumber
+	 *            the orderNumber to set
 	 */
 	public void setOrderNumber(int orderNumber) {
 		this.orderNumber = orderNumber;
@@ -85,7 +91,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param sn the sn to set
+	 * @param sn
+	 *            the sn to set
 	 */
 	public void setSn(String sn) {
 		this.sn = sn;
@@ -99,7 +106,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param display the display to set
+	 * @param display
+	 *            the display to set
 	 */
 	public void setDisplay(boolean display) {
 		this.display = display;
@@ -113,7 +121,8 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param parent the parent to set
+	 * @param parent
+	 *            the parent to set
 	 */
 	public void setParent(Menu parent) {
 		this.parent = parent;
@@ -127,11 +136,47 @@ public class Menu implements SysResource {
 	}
 
 	/**
-	 * @param children the children to set
+	 * @param children
+	 *            the children to set
 	 */
 	public void setChildren(Set<Menu> children) {
 		this.children = children;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getResourceId()
+	 */
+	@Override
+	public int getResourceId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getOperIndex()
+	 */
+	@Override
+	public int[] getOperIndex() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getResourceType()
+	 */
+	@Override
+	public String getResourceType() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getChildrenResource()
+	 */
+	@Override
+	public List<SysResource> getChildrenResource() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

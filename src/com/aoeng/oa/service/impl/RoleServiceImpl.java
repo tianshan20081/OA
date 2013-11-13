@@ -21,7 +21,8 @@ import com.aoeng.oa.vo.PagerVo;
  * 
  */
 @Service("roleService")
-public class RoleServiceImpl extends BaseDaoImpl implements RoleService {
+public class RoleServiceImpl extends BaseDaoImpl implements RoleService
+{
 	@Resource
 	private RoleDao roleDao;
 

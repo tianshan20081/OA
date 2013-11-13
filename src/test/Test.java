@@ -20,14 +20,14 @@ import junit.framework.TestCase;
  * Oct 30, 2013 5:01:56 PM
  * 
  */
-public class Test extends TestCase {
+public class Test extends TestCase
+{
 
 	public void test1() throws Exception {
 
 		long start = System.currentTimeMillis();
 		BeanFactory factory = new ClassPathXmlApplicationContext("app*.xml");
-		PartyService partyService = (PartyService) factory
-				.getBean("partyService");
+		PartyService partyService = (PartyService) factory.getBean("partyService");
 
 		Party company = new Company();
 		company.setName("易智付科技");
@@ -81,8 +81,7 @@ public class Test extends TestCase {
 
 	public void testPagers() throws Exception {
 		BeanFactory factory = new ClassPathXmlApplicationContext("app*.xml");
-		PartyService partyService = (PartyService) factory
-				.getBean("partyService");
+		PartyService partyService = (PartyService) factory.getBean("partyService");
 		PagerVo pagerVo = partyService.findAllPartyPaging("部");
 
 		System.out.println(pagerVo.toString());

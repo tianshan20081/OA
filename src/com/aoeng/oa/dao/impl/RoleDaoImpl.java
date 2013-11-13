@@ -13,11 +13,10 @@ import com.aoeng.oa.vo.PagerVo;
 
 /**
  * Nov 5, 201311:03:40 AM
- *
+ * 
  */
 @Repository("roleDao")
-public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
-
-
+public class RoleDaoImpl extends BaseDaoImpl implements RoleDao
+{
 
 }

@@ -179,7 +179,7 @@ body {
     				<li><a href="system/role.action">角色管理</a></li>
     				<li><a href="system/menu.action">菜单管理</a></li>
     				<li><a href="system/resource.action">资源管理</a></li>
-    				<li><a href="#">用户授权</a></li>
+    				<li><a href="system/acl!userAuthIndex.action">用户授权</a></li>
     				<li><a href="system/acl!roleAuthIndex.action">角色授权</a></li>
     				<li><a href="#">部门授权</a></li>
     				<li><a href="#">岗位授权</a></li>

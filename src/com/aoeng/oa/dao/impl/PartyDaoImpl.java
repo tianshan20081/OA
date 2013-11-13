@@ -14,7 +14,8 @@ import com.aoeng.oa.vo.PagerVo;
  * 
  */
 @Repository("partyDao")
-public class PartyDaoImpl extends BaseDaoImpl implements PartyDao {
+public class PartyDaoImpl extends BaseDaoImpl implements PartyDao
+{
 
 	/*
 	 * (non-Javadoc)
@@ -69,7 +70,7 @@ public class PartyDaoImpl extends BaseDaoImpl implements PartyDao {
 			hql = "select p.id , p.name,p.sex,p.phone from Person p where  1= 1 ";
 		}
 		if (null != sSearch && !"".equals(sSearch)) {
-			hql += " and ( p.name like '%" + sSearch + "%' or p.sex like '%"+sSearch +"%')";
+			hql += " and ( p.name like '%" + sSearch + "%' or p.sex like '%" + sSearch + "%')";
 		}
 		return findPaging(hql);
 	}

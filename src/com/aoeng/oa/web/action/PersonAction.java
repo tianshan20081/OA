@@ -17,14 +17,14 @@ import com.opensymphony.xwork2.ModelDriven;
 
 /**
  * Oct 31, 2013 7:30:38 PM
- *
+ * 
  */
 @Controller("personAction")
 @Scope("prototype")
-@Res(name="员工操作",sn="person",orderNumber=5,parentSn="party")
-public class PersonAction extends PartyAction implements ModelDriven {
-	private String sSearch ;
-	
+@Res(name = "员工操作", sn = "person", orderNumber = 50, parentSn = "party")
+public class PersonAction extends PartyAction implements ModelDriven
+{
+	private String sSearch;
 
 	/**
 	 * @return the sSearch
@@ -32,13 +32,18 @@ public class PersonAction extends PartyAction implements ModelDriven {
 	public String getSSearch() {
 		return sSearch;
 	}
+
 	/**
-	 * @param sSearch the sSearch to set
+	 * @param sSearch
+	 *            the sSearch to set
 	 */
 	public void setSSearch(String sSearch) {
 		this.sSearch = sSearch;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.opensymphony.xwork2.ModelDriven#getModel()
 	 */
 	@Override
@@ -49,27 +54,30 @@ public class PersonAction extends PartyAction implements ModelDriven {
 		}
 		return model;
 	}
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.web.action.PartyAction#execute()
 	 */
 	@Override
 	public String execute() {
 		// TODO Auto-generated method stub
-		
+
 		return "person_list";
 	}
+
 	/*
-	 * 分页查询人员
-	 * 根据ID来查询人员，可能是  公司人员，部门人员，岗位人员
+	 * 分页查询人员 根据ID来查询人员，可能是 公司人员，部门人员，岗位人员
 	 */
-	public void list(){
+	public void list() {
 		int parentId = model.getId();
-		PagerVo pagerVo = partyService.findPersons(parentId,sSearch);
+		PagerVo pagerVo = partyService.findPersons(parentId, sSearch);
 		Map map = new HashMap();
 		map.put("aaData", pagerVo.getDatas());
 		map.put("iTotalRecords", pagerVo.getDatas().size());
 		map.put("iTotalDisplayRecords", pagerVo.getTotal());
-		
+
 		JsonUtils.toJson(map);
 	}
 

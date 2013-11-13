@@ -11,9 +11,10 @@ import com.aoeng.oa.vo.AuthVo;
 
 /**
  * Nov 7, 20133:34:38 PM
- *
+ * 
  */
-public interface AclService {
+public interface AclService
+{
 
 	/**
 	 * @param principalType
@@ -29,6 +30,6 @@ public interface AclService {
 	 * @param string
 	 * @return
 	 */
-	List<ACL> findAclList(String principalType, int principalId, String string);
+	List<AuthVo> findAclList(String principalType, int principalId, String string);
 
 }

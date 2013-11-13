@@ -9,9 +9,10 @@ import com.aoeng.oa.model.Menu;
 
 /**
  * Nov 5, 20135:23:16 PM
- *
+ * 
  */
-public interface MenuDao extends BaseDao {
+public interface MenuDao extends BaseDao
+{
 
 	/**
 	 * @return
@@ -22,6 +23,5 @@ public interface MenuDao extends BaseDao {
 	 * @return
 	 */
 	List<Integer> findAllTopMenuIds();
-	
 
 }

@@ -15,15 +15,17 @@ import com.aoeng.oa.vo.PagerVo;
 
 /**
  * Oct 30, 2013 4:57:46 PM
- *
+ * 
  */
 @Service("partyService")
-public class PartyServiceImpl implements PartyService{
+public class PartyServiceImpl implements PartyService
+{
 	@Resource
-	private PartyDao partyDao ;
-	
+	private PartyDao partyDao;
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#addParty(com.aoeng.oa.model.Party)
 	 */
 	@Override
@@ -32,8 +34,9 @@ public class PartyServiceImpl implements PartyService{
 		partyDao.save(party);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#updateParty(com.aoeng.oa.model.Party)
 	 */
 	@Override
@@ -42,19 +45,21 @@ public class PartyServiceImpl implements PartyService{
 		partyDao.update(party);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#findAllPaging(java.lang.String, int, int)
 	 */
 	@Override
 	public PagerVo findAllPartyPaging(String partyName) {
 		// TODO Auto-generated method stub
-		
+
 		return partyDao.findAllPartyPaging(partyName);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#findCurrentCompany()
 	 */
 	@Override
@@ -63,8 +68,9 @@ public class PartyServiceImpl implements PartyService{
 		return partyDao.findCurrentCompany();
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#saveOrUpdateCompany(com.aoeng.oa.model.Company)
 	 */
 	@Override
@@ -73,44 +79,43 @@ public class PartyServiceImpl implements PartyService{
 		partyDao.saveOrUpdate(model);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#findPartyById()
 	 */
 	@Override
 	public Party findPartyById(int id) {
 		// TODO Auto-generated method stub
-		
-		return partyDao.findById(Party.class,id);
+
+		return partyDao.findById(Party.class, id);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#delParty(int)
 	 */
 	@Override
 	public void delParty(int id) {
 		// TODO Auto-generated method stub
 		Party p = partyDao.findById(Party.class, id);
-		if (p.getChildren().size() >0) {
+		if (p.getChildren().size() > 0) {
 			throw new RuntimeException("存在子Party 无法删除");
 		}
 		partyDao.del(p);
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.PartyService#findPersons(int, java.lang.String)
 	 */
 	@Override
 	public PagerVo findPersons(int parentId, String sSearch) {
 		// TODO Auto-generated method stub
-		
-		return partyDao.findPersons(parentId,sSearch);
+
+		return partyDao.findPersons(parentId, sSearch);
 	}
-
-
-
-
 
 }

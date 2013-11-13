@@ -10,18 +10,19 @@ import com.aoeng.oa.annotations.Res;
 import com.aoeng.oa.model.Department;
 import com.opensymphony.xwork2.ModelDriven;
 
-
 /**
  * Nov 1, 2013 5:44:12 PM
- *
+ * 
  */
 @Controller("departmentAction")
 @Scope("prototype")
-@Res(name="部门操作",sn="department",orderNumber=3,parentSn="party" )
-public class DepartmentAction  extends PartyAction implements ModelDriven{
-	
+@Res(name = "部门操作", sn = "department", orderNumber = 30, parentSn = "party")
+public class DepartmentAction extends PartyAction implements ModelDriven
+{
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.web.action.PartyAction#getModel()
 	 */
 	@Override

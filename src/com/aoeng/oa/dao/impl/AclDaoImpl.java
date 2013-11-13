@@ -11,13 +11,15 @@ import org.springframework.stereotype.Repository;
 
 import com.aoeng.oa.dao.AclDao;
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.SysResource;
 
 /**
  * Nov 7, 20133:41:39 PM
  * 
  */
 @Repository("aclDao")
-public class AclDaoImpl extends BaseDaoImpl implements AclDao {
+public class AclDaoImpl extends BaseDaoImpl implements AclDao
+{
 
 	/*
 	 * (non-Javadoc)
@@ -31,13 +33,15 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao {
 		String hql = "select ac from ACL ac where ac.principalType = ? and ac.principalId = ? and ac.resourceType = ? ";
 		Iterator<ACL> acls = getSession().createQuery(hql).setParameter(0, principalType).setParameter(1, principalId)
 				.setParameter(2, resourceType).iterate();
-		//删除所有的 acl 记录
+		// 删除所有的 acl 记录
 		while (acls.hasNext()) {
 			getSession().delete(acls.next());
 		}
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.dao.AclDao#findACL(java.lang.String, java.lang.String, java.lang.String, int)
 	 */
 	@Override
@@ -48,7 +52,9 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao {
 				.setParameter(2, resourceType).setParameter(3, resourceId).uniqueResult();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.dao.AclDao#findAclList(java.lang.String, int, java.lang.String)
 	 */
 	@Override
@@ -56,5 +62,15 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao {
 		String hql = "select ac from ACL ac where ac.principalType = ? and ac.principalId = ? and ac.resourceType = ? ";
 		return getSession().createQuery(hql).setParameter(0, principalType).setParameter(1, principalId)
 				.setParameter(2, resourceType).list();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.dao.AclDao#findAllSysResources(java.lang.String)
+	 */
+	@Override
+	public List<SysResource> findAllSysResources(String resourceType) {
+		// TODO Auto-generated method stub
+		
+		return null;
 	}
 }

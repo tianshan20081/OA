@@ -7,7 +7,8 @@ package com.aoeng.oa.vo;
  * Nov 7, 20133:28:39 PM
  * 
  */
-public class AuthVo {
+public class AuthVo
+{
 	private int resourceId;
 	private int operIndex;
 	private boolean permit;// 允许 true ,拒绝 false

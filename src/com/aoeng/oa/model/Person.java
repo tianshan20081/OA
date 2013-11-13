@@ -5,152 +5,180 @@ package com.aoeng.oa.model;
 
 /**
  * Oct 30, 2013 2:25:11 PM
- *
+ * 
  */
-public class Person extends Party{
+public class Person extends Party
+{
 	/**
 	 * 員工編號
 	 */
-	private String snumber ;
+	private String snumber;
 	/**
 	 * 員工地址
 	 */
-	private String address ;
+	private String address;
 	/**
 	 * 員工QQ
 	 */
-	private String qq ;
+	private String qq;
 	/**
 	 * 員工MSN
 	 */
-	private String msn ;
+	private String msn;
 	/**
 	 * 員工职责
 	 */
-	private String duty ;
+	private String duty;
 	/**
 	 * 員工电话号码
 	 */
-	private String phone ;
+	private String phone;
 	/**
 	 * 員工性别
 	 */
-	private String sex ;
+	private String sex;
 	/**
 	 * 員工邮箱
 	 */
-	private String email ;
+	private String email;
 	/**
 	 * 账户的引用
 	 */
-	private User user ;
+	private User user;
+
 	/**
 	 * @return the snumber
 	 */
 	public String getSnumber() {
 		return snumber;
 	}
+
 	/**
-	 * @param snumber the snumber to set
+	 * @param snumber
+	 *            the snumber to set
 	 */
 	public void setSnumber(String snumber) {
 		this.snumber = snumber;
 	}
+
 	/**
 	 * @return the address
 	 */
 	public String getAddress() {
 		return address;
 	}
+
 	/**
-	 * @param address the address to set
+	 * @param address
+	 *            the address to set
 	 */
 	public void setAddress(String address) {
 		this.address = address;
 	}
+
 	/**
 	 * @return the qq
 	 */
 	public String getQq() {
 		return qq;
 	}
+
 	/**
-	 * @param qq the qq to set
+	 * @param qq
+	 *            the qq to set
 	 */
 	public void setQq(String qq) {
 		this.qq = qq;
 	}
+
 	/**
 	 * @return the msn
 	 */
 	public String getMsn() {
 		return msn;
 	}
+
 	/**
-	 * @param msn the msn to set
+	 * @param msn
+	 *            the msn to set
 	 */
 	public void setMsn(String msn) {
 		this.msn = msn;
 	}
+
 	/**
 	 * @return the duty
 	 */
 	public String getDuty() {
 		return duty;
 	}
+
 	/**
-	 * @param duty the duty to set
+	 * @param duty
+	 *            the duty to set
 	 */
 	public void setDuty(String duty) {
 		this.duty = duty;
 	}
+
 	/**
 	 * @return the phone
 	 */
 	public String getPhone() {
 		return phone;
 	}
+
 	/**
-	 * @param phone the phone to set
+	 * @param phone
+	 *            the phone to set
 	 */
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
+
 	/**
 	 * @return the sex
 	 */
 	public String getSex() {
 		return sex;
 	}
+
 	/**
-	 * @param sex the sex to set
+	 * @param sex
+	 *            the sex to set
 	 */
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+
 	/**
 	 * @return the email
 	 */
 	public String getEmail() {
 		return email;
 	}
+
 	/**
-	 * @param email the email to set
+	 * @param email
+	 *            the email to set
 	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	/**
 	 * @return the user
 	 */
 	public User getUser() {
 		return user;
 	}
+
 	/**
-	 * @param user the user to set
+	 * @param user
+	 *            the user to set
 	 */
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 }

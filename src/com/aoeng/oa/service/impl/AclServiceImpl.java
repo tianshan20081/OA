@@ -3,7 +3,7 @@
  */
 package com.aoeng.oa.service.impl;
 
-import java.security.acl.Acl;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.aoeng.oa.dao.AclDao;
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.SysResource;
 import com.aoeng.oa.service.AclService;
 import com.aoeng.oa.vo.AuthVo;
 
@@ -20,7 +21,8 @@ import com.aoeng.oa.vo.AuthVo;
  * 
  */
 @Service("aclService")
-public class AclServiceImpl implements AclService {
+public class AclServiceImpl implements AclService
+{
 
 	@Resource
 	private AclDao aclDao;
@@ -51,7 +53,7 @@ public class AclServiceImpl implements AclService {
 					acl.setResourceType(resourceType);
 					acl.setPermission(operIndex, isPermit, isExtend);
 					aclDao.save(acl);
-				}else {
+				} else {
 					acl.setPermission(operIndex, isPermit, isExtend);
 					aclDao.update(acl);
 				}
@@ -60,13 +62,46 @@ public class AclServiceImpl implements AclService {
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.service.AclService#findAclList(java.lang.String, int, java.lang.String)
 	 */
 	@Override
-	public List<ACL> findAclList(String principalType, int principalId, String resourceType) {
+	public List<AuthVo> findAclList(String principalType, int principalId, String resourceType) {
 		// TODO Auto-generated method stub
-		return aclDao.findAclList(principalType,principalId,resourceType);
+		// return aclDao.findAclList(principalType, principalId, resourceType);
+		List<AuthVo> vos = new ArrayList<AuthVo>();
+
+		List<SysResource> resources = aclDao.findAllSysResources(resourceType);
+
+		for (SysResource r : resources) {
+			int[] opers = r.getOperIndex();
+			if (opers != null) {
+				for (int operIndex : opers) {
+					AuthVo vo = searchAcl(principalType, principalId, r.getResourceId(), resourceType, operIndex);
+					if (vo != null) {
+						vos.add(vo);
+					}
+				}
+
+			}
+		}
+
+		return vos;
+	}
+
+	/**
+	 * @param principalType
+	 * @param principalId
+	 * @param resourceId
+	 * @param resourceType
+	 * @param operIndex
+	 * @return
+	 */
+	private AuthVo searchAcl(String principalType, int principalId, int resourceId, String resourceType, int operIndex) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

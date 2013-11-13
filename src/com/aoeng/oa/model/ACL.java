@@ -7,7 +7,8 @@ package com.aoeng.oa.model;
  * Nov 4, 20137:19:43 PM
  * 
  */
-public class ACL {
+public class ACL
+{
 
 	private int id;
 	private String principalType;
@@ -25,11 +26,13 @@ public class ACL {
 		aclTriState = setBit(aclTriState, index, isExtend);
 		aclState = setBit(aclState, index, isPermit);
 	}
-	public boolean isExtend(int index){
+
+	public boolean isExtend(int index) {
 		return getBit(aclTriState, index);
 	}
-	public boolean isPermit(int index){
-		return getBit(aclState,index);
+
+	public boolean isPermit(int index) {
+		return getBit(aclState, index);
 	}
 
 	/**
@@ -39,14 +42,15 @@ public class ACL {
 	 */
 	private boolean getBit(int i, int index) {
 		// TODO Auto-generated method stub
-		int temp = 1 ;
-		temp = temp << index ;
-		temp = i & temp ;
+		int temp = 1;
+		temp = temp << index;
+		temp = i & temp;
 		if (temp == 0) {
-			return false ;
+			return false;
 		}
 		return true;
 	}
+
 	/**
 	 * 000000000000000000...0000000000000000
 	 * 

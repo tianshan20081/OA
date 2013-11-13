@@ -16,7 +16,8 @@ import com.aoeng.oa.vo.PagerVo;
  * 
  */
 @Repository("menuDao")
-public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
+public class MenuDaoImpl extends BaseDaoImpl implements MenuDao
+{
 
 	/*
 	 * (non-Javadoc)
@@ -31,7 +32,9 @@ public class MenuDaoImpl extends BaseDaoImpl implements MenuDao {
 		return getSession().createQuery(hql).list();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.dao.MenuDao#findAllTopMenuIds()
 	 */
 	@Override
