@@ -11,7 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.aoeng.oa.dao.AclDao;
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.Principal;
 import com.aoeng.oa.model.SysResource;
+import com.aoeng.oa.vo.AuthVo;
 
 /**
  * Nov 7, 20133:41:39 PM
@@ -64,13 +66,26 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao
 				.setParameter(2, resourceType).list();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.dao.AclDao#findAllSysResources(java.lang.String)
 	 */
 	@Override
 	public List<SysResource> findAllSysResources(String resourceType) {
 		// TODO Auto-generated method stub
-		
-		return null;
+		String hql = " from " + resourceType;
+		return getSession().createQuery(hql).list();
 	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.dao.AclDao#findPrincipalById(java.lang.String, int)
+	 */
+	@Override
+	public Principal findPrincipalById(String principalType, int principalId) {
+		// TODO Auto-generated method stub
+		String hql = "from " + principalType +" t where t.id = ?";
+		return (Principal) getSession().createQuery(hql).setParameter(0, principalId).uniqueResult();
+	}
+
 }

@@ -3,6 +3,7 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -229,7 +230,7 @@ public class ActionResource implements SysResource
 	@Override
 	public int getResourceId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
 
 	/* (non-Javadoc)
@@ -238,6 +239,15 @@ public class ActionResource implements SysResource
 	@Override
 	public int[] getOperIndex() {
 		// TODO Auto-generated method stub
+		if (opers != null) {
+			Collection<ActionMethodOper> ams = opers.values();
+			int[] opersIndex = new int[ams.size()];
+			int i = 0;
+			for (ActionMethodOper oper : ams) {
+				opersIndex[i++] = oper.getOperIndex();
+			}
+			return opersIndex;
+		}
 		return null;
 	}
 

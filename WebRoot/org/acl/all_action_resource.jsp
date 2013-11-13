@@ -135,6 +135,7 @@
 				var permit = authVo.permit;
 				var extend = authVo.extend;
 				//操作资源的ins标签
+				alert(permit);
 				var node = $("ins[resourceId=" + resourceId + "][operIndex=" + operIndex + "]");
 				if (permit) {//允许
 					node.removeClass("jstree-deny jstree-normal jstree-extend").addClass("jstree-permit");

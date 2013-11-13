@@ -149,7 +149,7 @@ public class Menu implements SysResource
 	@Override
 	public int getResourceId() {
 		// TODO Auto-generated method stub
-		return 0;
+		return id;
 	}
 
 	/* (non-Javadoc)

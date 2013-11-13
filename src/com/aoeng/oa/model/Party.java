@@ -3,13 +3,15 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
  * Oct 30, 2013 1:27:32 PM
  * 
  */
-public class Party
+public class Party implements Principal
 {
 	private int id;
 	private String name;
@@ -131,6 +133,38 @@ public class Party
 	 */
 	public void setSn(String sn) {
 		this.sn = sn;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.Principal#getPrincipalId()
+	 */
+	@Override
+	public int getPrincipalId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.Principal#getPrincipalType()
+	 */
+	@Override
+	public String getPrincipalType() {
+		// TODO Auto-generated method stub
+		return "Party";
+	}
+
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.Principal#getParentPrincipal()
+	 */
+	@Override
+	public List<Principal> getParentPrincipal() {
+		// TODO Auto-generated method stub
+		List<Principal> parents = new ArrayList<Principal>();
+		Principal parentParty = parent ; 
+		if (parentParty != null) {
+			parents.add(parentParty);
+		}
+		return parents;
 	}
 
 }

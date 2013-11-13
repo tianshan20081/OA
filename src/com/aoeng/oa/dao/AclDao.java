@@ -7,7 +7,9 @@ import java.security.acl.Acl;
 import java.util.List;
 
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.Principal;
 import com.aoeng.oa.model.SysResource;
+import com.aoeng.oa.vo.AuthVo;
 
 /**
  * Nov 7, 20133:38:29 PM
@@ -45,5 +47,13 @@ public interface AclDao extends BaseDao
 	 * @return
 	 */
 	List<SysResource> findAllSysResources(String resourceType);
+
+	/**
+	 * @param principalType
+	 * @param principalId
+	 * @return
+	 */
+	Principal findPrincipalById(String principalType, int principalId);
+
 
 }

@@ -3,7 +3,9 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -91,6 +93,50 @@ public class User implements Principal
 	 */
 	public void setPerson(Person person) {
 		this.person = person;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.model.Principal#getPrincipalId()
+	 */
+	@Override
+	public int getPrincipalId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.model.Principal#getPrincipalType()
+	 */
+	@Override
+	public String getPrincipalType() {
+		// TODO Auto-generated method stub
+		return "User";
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.model.Principal#getParentPrincipal()
+	 */
+	@Override
+	public List<Principal> getParentPrincipal() {
+		// TODO Auto-generated method stub
+		List<Principal> parents = new ArrayList<Principal>();
+		Principal parentParty = person.getParent();
+		if (parentParty != null) {
+			parents.add(parentParty);
+		}
+		// 然后看看那个用户拥有该角色
+		if (userRoles != null) {
+			for (UserRoles ur : userRoles) {
+				parents.add(ur.getRole());
+			}
+		}
+		return parents;
 	}
 
 }
