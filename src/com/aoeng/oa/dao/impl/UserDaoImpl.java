@@ -79,7 +79,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao
 	public List findPersonWithUsers(String personName) {
 		// TODO Auto-generated method stub
 		String hql = "select p.id,p.name from Person p join p.user u where p.name like ?";
-		return getSession().createQuery(hql).setParameter(0, personName).list();
+		return getSession().createQuery(hql).setParameter(0, "%"+personName+"%").list();
 	}
 
 }
