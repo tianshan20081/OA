@@ -70,13 +70,10 @@ public class AclServiceImpl implements AclService
 	 */
 	@Override
 	public List<AuthVo> findAclList(String principalType, int principalId, String resourceType) {
-		// TODO Auto-generated method stub
-		// return aclDao.findAclList(principalType, principalId, resourceType);
 		List<AuthVo> vos = new ArrayList<AuthVo>();
 
-		// 查询出指定类型的所有资源
 		List<SysResource> resources = aclDao.findAllSysResources(resourceType);
-		// 针对每个资源取出操作索引
+
 		for (SysResource r : resources) {
 			int[] opers = r.getOperIndex();
 			if (opers != null) {
@@ -88,6 +85,7 @@ public class AclServiceImpl implements AclService
 				}
 			}
 		}
+
 		return vos;
 	}
 
@@ -100,34 +98,31 @@ public class AclServiceImpl implements AclService
 	 * @return
 	 */
 	private AuthVo searchAcl(String principalType, int principalId, int resourceId, String resourceType, int operIndex) {
-		// TODO Auto-generated method stub
-		//首先查询主体是否有这个资源对象
 		ACL acl = aclDao.findACL(principalType, principalId, resourceType, resourceId);
-		AuthVo vo = null ;
-		if (null != acl && acl.isExtend(operIndex)) {
+		AuthVo vo = null;
+		if (acl != null && !acl.isExtend(operIndex)) {
 			vo = new AuthVo();
-			vo.setResourceId(acl.getPrincipalId());
+			vo.setResourceId(resourceId);
 			vo.setPermit(acl.isPermit(operIndex));
+			vo.setExtend(acl.isExtend(operIndex));
 			vo.setOperIndex(operIndex);
-			vo.setPermit(acl.isExtend(operIndex));
-			return vo ;
+			return vo;
 		}
-		//如果沒有找到授權，則判断父主体上是否存在授权
-		Principal principal = aclDao.findPrincipalById(principalType,principalId);
+		Principal principal = aclDao.findPrincipalById(principalType, principalId);
 		List<Principal> parents = principal.getParentPrincipal();
-		if (null != parents) {
+
+		if (parents != null) {
 			for (Principal p : parents) {
-				//获得父主体 的 authVo 
 				AuthVo pvo = searchAcl(p.getPrincipalType(), p.getPrincipalId(), resourceId, resourceType, operIndex);
-				if (null != pvo) {
+				if (pvo != null) {
 					vo = new AuthVo();
-					vo.setPermit(pvo.isPermit());
-					vo.setExtend(true);
 					vo.setResourceId(resourceId);
 					vo.setOperIndex(operIndex);
-					
+					vo.setPermit(pvo.isPermit());
+					vo.setExtend(true);
 				}
 			}
+
 		}
 		return vo;
 	}

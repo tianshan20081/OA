@@ -59,5 +59,8 @@
 			<result name="all_menu_resource">/org/acl/all_menu_resource.jsp</result>
 			<result name="all_action_resource">/org/acl/all_action_resource.jsp</result>
 		</action>
+		<action name="login" class="loginAction">
+			<result name="back_index">/main.jsp</result>
+		</action>
 	</package>
 </struts>

@@ -147,4 +147,21 @@ public class UserServiceImpl implements UserService
 		return userDao.findPersonWithUsers(sSearch);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.service.UserService#login(java.lang.String, java.lang.String)
+	 */
+	@Override
+	public User login(String username, String password) {
+		// TODO Auto-generated method stub
+		User user = userDao.findUserByUsername(username);
+		if (null == user ) {
+			throw new RuntimeException("用户不存在");
+		}
+		if (password.equals(user.getPassword())) {
+			return user;
+		}else {
+			throw new RuntimeException("用户密码出错!");
+		}
+	}
+
 }

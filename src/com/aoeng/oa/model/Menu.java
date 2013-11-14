@@ -3,6 +3,7 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -143,7 +144,9 @@ public class Menu implements SysResource
 		this.children = children;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getResourceId()
 	 */
 	@Override
@@ -152,30 +155,42 @@ public class Menu implements SysResource
 		return id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getOperIndex()
 	 */
 	@Override
 	public int[] getOperIndex() {
 		// TODO Auto-generated method stub
-		return null;
+		return new int[] { 0 };
+
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getResourceType()
 	 */
 	@Override
 	public String getResourceType() {
 		// TODO Auto-generated method stub
-		return null;
+		return "Menu";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getChildrenResource()
 	 */
 	@Override
 	public List<SysResource> getChildrenResource() {
 		// TODO Auto-generated method stub
+		if (children != null) {
+			List<SysResource> res = new ArrayList<SysResource>();
+			res.addAll(children);
+			return res;
+		}
 		return null;
 	}
 

@@ -40,4 +40,10 @@ public interface UserDao extends BaseDao
 	 */
 	List findPersonWithUsers(String personName);
 
+	/**
+	 * @param username
+	 * @return
+	 */
+	User findUserByUsername(String username);
+
 }

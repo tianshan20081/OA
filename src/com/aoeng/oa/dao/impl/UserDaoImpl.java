@@ -82,4 +82,14 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao
 		return getSession().createQuery(hql).setParameter(0, "%"+personName+"%").list();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.dao.UserDao#findUserByUsername(java.lang.String)
+	 */
+	@Override
+	public User findUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		String hql = "select u from User u where u.username = ? ";
+		return (User) getSession().createQuery(hql).setParameter(0, username).uniqueResult();
+	}
+
 }

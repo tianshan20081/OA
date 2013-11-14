@@ -252,16 +252,6 @@ public class AclAction
 	 */
 	public void findMenuAcls() {
 		List<AuthVo> acls = aclService.findAclList(principalType, principalId, "Menu");
-		// List<AuthVo> vos = new ArrayList<AuthVo>();
-		// for (ACL acl : acls) {
-		// AuthVo vo = new AuthVo();
-		// vo.setResourceId(acl.getResourceId());
-		// vo.setOperIndex(0);
-		// vo.setPermit(acl.isPermit(0));
-		// vo.setExtend(acl.isExtend(0));
-		//
-		// vos.add(vo);
-		// }
 		JsonUtils.toJson(acls);
 	}
 

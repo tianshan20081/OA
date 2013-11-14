@@ -3,6 +3,7 @@
  */
 package com.aoeng.oa.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -224,7 +225,9 @@ public class ActionResource implements SysResource
 		this.className = className;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getResourceId()
 	 */
 	@Override
@@ -233,7 +236,9 @@ public class ActionResource implements SysResource
 		return id;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getOperIndex()
 	 */
 	@Override
@@ -251,22 +256,31 @@ public class ActionResource implements SysResource
 		return null;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getResourceType()
 	 */
 	@Override
 	public String getResourceType() {
 		// TODO Auto-generated method stub
-		return null;
+		return "ActionResource";
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getChildrenResource()
 	 */
 	@Override
 	public List<SysResource> getChildrenResource() {
-		// TODO Auto-generated method stub
+		if (children != null) {
+			List<SysResource> res = new ArrayList<SysResource>();
+			res.addAll(children);
+			return res;
+		}
 		return null;
+
 	}
 
 }

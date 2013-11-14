@@ -85,4 +85,11 @@ public interface UserService
 	 */
 	List findPersonWithUsers(String sSearch);
 
+	/**
+	 * @param username
+	 * @param password
+	 * @return
+	 */
+	User login(String username, String password);
+
 }

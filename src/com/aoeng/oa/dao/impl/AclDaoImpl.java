@@ -84,7 +84,7 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao
 	@Override
 	public Principal findPrincipalById(String principalType, int principalId) {
 		// TODO Auto-generated method stub
-		String hql = "from " + principalType +" t where t.id = ?";
+		String hql = " from " + principalType +" t where t.id = ?";
 		return (Principal) getSession().createQuery(hql).setParameter(0, principalId).uniqueResult();
 	}
 
