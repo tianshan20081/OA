@@ -78,6 +78,9 @@ public class InitServiceImpl implements InitService, BeanFactoryAware
 			// 重建所有的 ActionResource 资源
 			ResourceService resourceService = (ResourceService) beanFactory.getBean("resourceService");
 			resourceService.rebuildActionResource();
+			
+			//初始化超级管理员
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -4,6 +4,8 @@
 package com.aoeng.oa.service.impl;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -11,7 +13,9 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 import com.aoeng.oa.dao.AclDao;
+import com.aoeng.oa.dao.MenuDao;
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.Menu;
 import com.aoeng.oa.model.Principal;
 import com.aoeng.oa.model.SysResource;
 import com.aoeng.oa.service.AclService;
@@ -27,6 +31,8 @@ public class AclServiceImpl implements AclService
 
 	@Resource
 	private AclDao aclDao;
+	@Resource
+	private MenuDao menuDao;
 
 	/*
 	 * (non-Javadoc)
@@ -125,6 +131,41 @@ public class AclServiceImpl implements AclService
 
 		}
 		return vo;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.AclService#findAllPermitMenusById(int)
+	 */
+	@Override
+	public List<Menu> findAllPermitMenusById(int userId) {
+		// TODO Auto-generated method stub
+		// 查询出所有的顶级菜单
+		List<Menu> topMenus = menuDao.findAllTopMenus();
+		removeDenyMenus(topMenus, userId);
+		return topMenus;
+	}
+
+	/**
+	 * 删除用户没有许可的菜单
+	 * 
+	 * @param topMenus
+	 * @param userId
+	 */
+	private void removeDenyMenus(Collection<Menu> menus, int userId) {
+		// TODO Auto-generated method stub
+		for (Iterator<Menu> iter = menus.iterator();iter.hasNext();) {
+			//查询针对当前用户所拥有的权限
+			Menu menu = iter.next();
+			AuthVo vo = searchAcl("User", userId, menu.getId(), "Menu", menu.getOperIndex()[0]);
+			if (null == vo  || !vo.isPermit()) {
+				iter.remove();
+			}else {
+				//如果当前菜单是许可的，则查询其子菜单是否是许可的
+				removeDenyMenus(menu.getChildren(), userId);
+			}
+		}
 	}
 
 }

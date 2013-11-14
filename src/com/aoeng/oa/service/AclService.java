@@ -7,6 +7,7 @@ import java.security.acl.Acl;
 import java.util.List;
 
 import com.aoeng.oa.model.ACL;
+import com.aoeng.oa.model.Menu;
 import com.aoeng.oa.vo.AuthVo;
 
 /**
@@ -31,5 +32,11 @@ public interface AclService
 	 * @return
 	 */
 	List<AuthVo> findAclList(String principalType, int principalId, String string);
+
+	/**
+	 * @param id
+	 * @return
+	 */
+	List<Menu> findAllPermitMenusById(int userId);
 
 }
