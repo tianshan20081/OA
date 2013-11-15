@@ -20,6 +20,7 @@ import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.BeanFactoryAware;
 import org.springframework.stereotype.Service;
 
+import com.aoeng.oa.dao.InitDao;
 import com.aoeng.oa.service.InitService;
 import com.aoeng.oa.service.ResourceService;
 
@@ -32,6 +33,9 @@ public class InitServiceImpl implements InitService, BeanFactoryAware
 {
 	private String path;
 	private BeanFactory beanFactory;
+
+	@Resource
+	private InitDao initDao;
 
 	/**
 	 * @param path
@@ -78,9 +82,10 @@ public class InitServiceImpl implements InitService, BeanFactoryAware
 			// 重建所有的 ActionResource 资源
 			ResourceService resourceService = (ResourceService) beanFactory.getBean("resourceService");
 			resourceService.rebuildActionResource();
-			
-			//初始化超级管理员
-			
+
+			// 初始化超级管理员
+			initDao.addInitAdmin();
+
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

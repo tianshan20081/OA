@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/inc.jsp"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -19,14 +20,14 @@
 		//将menuContainer变成一棵树！
 		$("#menuContainer").jstree({
 			"json_data" : {
-				"ajax":{
-					"url":"system/index!menu.action",
+				"ajax" : {
+					"url" : "system/index!menu.action",
 				}
 			},
 			"themes" : {
 				"theme" : "apple"
 			},
-			"plugins" : [ "themes", "html_data" ]
+			"plugins" : [ "themes", "json_data" ]
 		});
 
 		//给所有的链接设置其target属性为rightFrame，即在右边打开链接地址

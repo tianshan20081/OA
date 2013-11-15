@@ -24,10 +24,9 @@
 	</entity>
 
 	<!-- 角色数据 -->
-	<entity class="Role" name="临时员工" call="roleService.addRole" />
 	<entity class="Role" name="部门领导" call="roleService.addRole" />
+	<entity class="Role" name="临时工" call="roleService.addRole" />
 	<entity class="Role" name="档案管理员" call="roleService.addRole" />
-
 
 	<!-- 菜单数据 -->
 	<entity class="Menu" sn="personal" name="个人办公" orderNumber="1" display="true" call="menuService.addMenu">
@@ -87,7 +86,7 @@
 			<entity class="Menu" name="在线状态" orderNumber="214" display="true" />
 		</entity>
 	</entity>
-	<entity class="Menu" sn="workflow"  name="工作流" orderNumber="2" display="true" call="menuService.addMenu">
+	<entity class="Menu" sn="workflow" name="工作流" orderNumber="2" display="true" call="menuService.addMenu">
 		<entity class="Menu" name="表单定义" orderNumber="21" display="true">
 			<entity class="Menu" name="创建新的表单" orderNumber="211" display="true" />
 			<entity class="Menu" name="查询已有表单" orderNumber="213" display="true" />
@@ -103,7 +102,7 @@
 			<entity class="Menu" name="已办任务" orderNumber="234" display="true" />
 		</entity>
 	</entity>
-	<entity class="Menu" sn="office"  name="行政办公" orderNumber="3" display="true" call="menuService.addMenu">
+	<entity class="Menu" sn="office" name="行政办公" orderNumber="3" display="true" call="menuService.addMenu">
 		<entity class="Menu" name="公告通知" orderNumber="31" display="true">
 			<entity class="Menu" name="发布公告" orderNumber="311" display="true" />
 			<entity class="Menu" name="查阅历史公告" orderNumber="312" display="true" />
@@ -120,7 +119,7 @@
 		<entity class="Menu" name="用品管理" orderNumber="36" display="true">
 		</entity>
 	</entity>
-	<entity class="Menu" sn="system"  name="系统管理" orderNumber="4" display="true" call="menuService.addMenu">
+	<entity class="Menu" sn="system" name="系统管理" orderNumber="4" display="true" call="menuService.addMenu">
 		<entity class="Menu" name="组织机构管理" orderNumber="41" display="true">
 			<entity class="Menu" name="单位/公司信息设置" href="system/company.action?method:saveInput" orderNumber="411" display="true" />
 			<entity class="Menu" name="部门/岗位设置" href="system/party.action" orderNumber="412" display="true" />
@@ -131,13 +130,12 @@
 			<entity class="Menu" name="角色管理" href="system/role.action" orderNumber="422" display="true" />
 			<entity class="Menu" name="菜单管理" href="system/menu.action" orderNumber="423" display="true" />
 			<entity class="Menu" name="资源管理" href="system/resource.action" orderNumber="424" display="true" />
-			<entity class="Menu" name="用户授权" orderNumber="425" display="true" />
+			<entity class="Menu" name="用户授权" href="system/acl!userAuthIndex.action" orderNumber="425" display="true" />
 			<entity class="Menu" name="角色授权" href="system/acl!roleAuthIndex.action" orderNumber="426" display="true" />
-			<entity class="Menu" name="部门授权" orderNumber="427" display="true" />
-			<entity class="Menu" name="岗位授权" orderNumber="428" display="true" />
+			<entity class="Menu" name="部门/岗位授权" href="system/acl!partyAuthIndex.action" orderNumber="427" display="true" />
 		</entity>
 	</entity>
-	<entity class="Menu" sn="archives"  name="档案管理" orderNumber="5" display="true" call="menuService.addMenu">
+	<entity class="Menu" sn="archives" name="档案管理" orderNumber="5" display="true" call="menuService.addMenu">
 		<entity class="Menu" name="卷库分类" orderNumber="51" display="true">
 			<entity class="Menu" name="创建分类" orderNumber="511" display="true" />
 			<entity class="Menu" name="查询已有分类" orderNumber="512" display="true" />
@@ -154,7 +152,7 @@
 			<entity class="Menu" name="查阅档案" orderNumber="543" display="true" />
 		</entity>
 	</entity>
-	<entity class="Menu"  name="内部论坛" orderNumber="6" display="true" call="menuService.addMenu">
+	<entity class="Menu" name="内部论坛" orderNumber="6" display="true" call="menuService.addMenu">
 		<entity class="Menu" name="板块交流" orderNumber="61" display="true">
 			<entity class="Menu" name="Java技术园地" orderNumber="611" display="true" />
 			<entity class="Menu" name="灌水专区" orderNumber="612" display="true" />
@@ -172,6 +170,6 @@
 			<entity class="Menu" name="查询已有知识" orderNumber="722" display="true" />
 		</entity>
 	</entity>
-	
-	<entity class="ActionResource" name="权限操作" orderNumber="60" sn="security" call="resourceService.addActionResource"/>
+
+	<entity class="ActionResource" name="权限操作" orderNumber="60" sn="security" call="resourceService.addActionResource" />
 </init>

@@ -76,7 +76,12 @@ public class LoginInfoVo
 	public void setLoginTime(Date loginTime) {
 		this.loginTime = loginTime;
 	}
-	
-	
-
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "LoginInfoVo [username=" + username + ", name=" + name + ", id=" + id + ", ip=" + ip + ", loginTime="
+				+ loginTime + "]";
+	}
 }

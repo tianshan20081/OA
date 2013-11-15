@@ -19,6 +19,7 @@ public class BaseAction
 	 * @return
 	 */
 	protected LoginInfoVo getCurrentUser() {
+		System.out.println(ServletActionContext.getRequest().getQueryString());;
 		return (LoginInfoVo) ServletActionContext.getRequest().getSession().getAttribute("login");
 	}
 

@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="/common/inc.jsp"%>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://"
@@ -47,7 +47,8 @@ a img {
 </style>
 <script type="text/javascript">
 	var open = true;
-	function openClose() {
+	function openClose()
+	{
 		if (open) {
 			window.parent.mainFrame.document.getElementById("leftMenu").width = 1;
 			open = false;
@@ -56,60 +57,68 @@ a img {
 			open = true;
 		}
 	}
+	function quit(){
+		if(window.confirm("您确定要退出系统?")){
+			window.parent.location = "system/login!quit.action";
+		}
+		 
+		 
+	}
 </script>
 </head>
 <body>
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
-			<td background="images/main_03.gif"><table width="100%"
-					border="0" cellspacing="0" cellpadding="0">
+			<td background="images/main_03.gif"><table width="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
-						<td width="100%" height="50" valign="bottom"
-							background="images/logo_top.jpg">&nbsp;</td>
+						<td width="100%" height="50" valign="bottom" background="images/logo_top.jpg">&nbsp;</td>
 					</tr>
 				</table>
 			</td>
 		</tr>
 		<tr>
-			<td height="30" align="left" background="images/main_31.gif"><table
-					width="100%" height="100%" border="0" cellspacing="0"
-					cellpadding="0">
+			<td height="30" align="left" background="images/main_31.gif"><table width="100%" height="100%" border="0" cellspacing="0" cellpadding="0">
 					<tr>
 						<td width="8" bgcolor="#353C44">&nbsp;</td>
-					  <td><table width="225" border="0" align="right" cellpadding="0"
-								cellspacing="0">
+						<td><table width="225" border="0" align="right" cellpadding="0" cellspacing="0">
 								<tr>
-				  <td height="17"><div align="left">
-											<a href="#" target="rightFrame"><img
-												src="images/pass.gif" width="69" height="17" />
-											</a>
+									<td height="17"><div align="left">
+											<a href="#" target="rightFrame"><img src="images/pass.gif" width="69" height="17" /> </a>
 										</div>
-								  </td>
-				  <td><div align="left">
-											<a href="#" target="rightFrame"><img
-												src="images/user.gif" width="69" height="17" />
-											</a>
+									</td>
+									<td><div align="left">
+											<a href="#" target="rightFrame"><img src="images/user.gif" width="69" height="17" /> </a>
 										</div>
-								  </td>
-				  <td><div align="left">
-											<a href="LoginServlet?method=quit" target="_parent"><img
-												src="images/quit.gif" alt=" " width="69" height="17" />
-											</a>
+									</td>
+									<td><div align="left">
+											<a onclick="javascript:quit();" target="_parent"><img src="images/quit.gif" alt=" " width="69" height="17" /> </a>
 										</div>
-								  </td>
+									</td>
 								</tr>
 							</table>
-						  <table width="225" border="0" align="left" cellpadding="0"
-								cellspacing="0" style="font-size:12px;font-family:宋体;font-weight: bold;">
-							  <tr>
-								  <td width="172" height="17"><div align="right">
-										 当前用户:
-										</div>
-								  </td>
-								  <td width="153"><div align="left">${login.name}</div>									<div align="left"></div>
-								  </td>
-							  </tr>
-						  </table></td>
+							<table width="700" border="0" align="left" cellpadding="0" cellspacing="0" style="font-size:12px;font-family:宋体;font-weight: bold;">
+								<tr>
+									<td width="60" height="17">
+										<div align="right">当前用户:</div>
+									</td>
+									<td width="80">
+										<div align="left">${login.name}</div>
+									</td>
+
+									<td width="50" height="17">
+										<div align="right">登录 IP:</div>
+									</td>
+									<td width="50">
+										<div align="left">${login.ip}</div>
+									</td>
+									<td width="50" height="17">
+										<div align="right">时间:</div>
+									</td>
+									<td width="230">
+										<div align="left"><fmt:formatDate value="${login.loginTime}" pattern="yyyy年mm月dd日 HH:mm:SSS"/></div>
+									</td>
+								</tr>
+							</table></td>
 						<td width="8" bgcolor="#353C44">&nbsp;</td>
 					</tr>
 				</table></td>

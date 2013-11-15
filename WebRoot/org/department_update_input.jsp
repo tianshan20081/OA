@@ -38,11 +38,7 @@
 			<input type="hidden" name="method:update"><input type="hidden" name="id" value="<s:property value="id"/>">
 			<fieldset>
 				<legend>
-					部门基本信息 
-					<input type="button" value="添加下级部门" onclick="window.location = 'system/department!addInput.action?parent.id=${id}'"> 
-					<input type="button" value="添加岗位" onclick="window.location = 'system/position!addInput.action?parent.id=${id}'">
-					<input type="button" value="添加人员" onclick="window.location = 'system/person!addInput.action?parent.id=${id}'"> 
-					<input type="button" value="删除本部门" onclick="window.location = 'system/department!del.action?id=${id}'">
+					部门基本信息 <input type="button" value="添加下级部门" onclick="window.location = 'system/department!addInput.action?parent.id=${id}'"> <input type="button" value="添加岗位" onclick="window.location = 'system/position!addInput.action?parent.id=${id}'"> <input type="button" value="添加人员" onclick="window.location = 'system/person!addInput.action?parent.id=${id}'"> <input type="button" value="删除本部门" onclick="window.location = 'system/department!del.action?id=${id}'">
 				</legend>
 				<div>
 					<label for="name">名称</label> <input type="text" name="name" id="name" value="${name }" size="60" /> <br />
@@ -53,7 +49,7 @@
 				<div>
 					<label for="tel">电话</label> <input type="text" name="tel" id="tel" value="${tel }" size="30" /> <br />
 				</div>
-				
+
 				<div>
 					<label for="description">描述</label> <input type="text" name="description" id="description" value="${description }" size="60" /> <br />
 				</div>

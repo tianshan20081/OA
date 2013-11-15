@@ -5,6 +5,8 @@ package com.aoeng.oa.dao.impl;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.aoeng.oa.dao.InitDao;
 import com.aoeng.oa.model.ACL;
 import com.aoeng.oa.model.Person;
@@ -19,6 +21,7 @@ import com.aoeng.oa.vo.PagerVo;
  * Nov 14, 20135:07:31 PM
  * 
  */
+@Repository("initDao")
 public class InitDaoImpl extends BaseDaoImpl implements InitDao
 {
 
@@ -31,15 +34,18 @@ public class InitDaoImpl extends BaseDaoImpl implements InitDao
 	public void addInitAdmin() {
 		// TODO Auto-generated method stub
 		getSession().flush();
+		getSession().clear();
 
 		Person admin = new Person();
 		admin.setName("超级管理员");
+		getSession().save(admin);
+
 		User adminUser = new User();
 		adminUser.setUsername("admin");
 		adminUser.setPassword("admin");
-		admin.setUser(adminUser);
 
-		getSession().save(admin);
+		adminUser.setPerson(admin);
+
 		getSession().save(adminUser);
 
 		// 创建系统管理员角色
@@ -64,12 +70,21 @@ public class InitDaoImpl extends BaseDaoImpl implements InitDao
 
 		// 查询系统管理的菜单,安全相关的菜单，组织机构
 		String hql = " select r from com.aoeng.oa.model.SysResource r where r.sn in ('system','security','party')";
-		
-		List<SysResource> resources = getSession().createQuery(hql).list();
-		for (SysResource sr : resources) {
-			saveAllPermitAcl(adminRole,sr);
+
+		List<SysResource> res = getSession().createQuery(hql).list();
+		for (SysResource sr : res) {
+			// 把这些所有资源的所有操作权限赋予超级管理员
+			saveAllPermitAcl(adminRole, sr);
+			// 给普通员工授权
+			saveAllPermitAcl(adminUser, sr);
 		}
-		
+
+		hql = " select r from com.aoeng.oa.model.SysResource r where r.sn in ('personal','workflow')";
+		res = getSession().createQuery(hql).list();
+		for (SysResource sr : res) {
+			saveAllPermitAcl(commonRole, sr);
+		}
+
 	}
 
 	/**
@@ -83,17 +98,17 @@ public class InitDaoImpl extends BaseDaoImpl implements InitDao
 		acl.setResourceId(r.getResourceId());
 		acl.setPrincipalType(r.getResourceType());
 		acl.setResourceType(r.getResourceType());
-		acl.setAclState(-1);
-		acl.setAclTriState(0);//授权不继承
+		acl.setAclState(-1);// 菜单全部授权，1111111111111...111111111111
+		acl.setAclTriState(0);// 授权不继承
 		getSession().save(acl);
-		
+
 		List<SysResource> children = r.getChildrenResource();
 		if (children != null) {
 			for (SysResource s : children) {
 				saveAllPermitAcl(principal, s);
 			}
 		}
-		
+
 	}
 
 }

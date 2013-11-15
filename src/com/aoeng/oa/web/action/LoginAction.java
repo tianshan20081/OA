@@ -29,15 +29,16 @@ public class LoginAction
 	private String password;
 
 	public String execute() {
-		User user =userService.login(username,password);
+		User user = userService.login(username, password);
 		LoginInfoVo loginInfoVo = new LoginInfoVo();
 		loginInfoVo.setId(user.getId());
 		loginInfoVo.setUsername(user.getUsername());
 		loginInfoVo.setName(user.getPerson().getName());
 		loginInfoVo.setIp(ServletActionContext.getRequest().getRemoteHost());
 		loginInfoVo.setLoginTime(new Date());
-		
-		ServletActionContext.getRequest().setAttribute("login", loginInfoVo);
+
+		ServletActionContext.getRequest().getSession().setAttribute("login", loginInfoVo);
+		System.out.println(loginInfoVo.toString());
 		return "back_index";
 	}
 
