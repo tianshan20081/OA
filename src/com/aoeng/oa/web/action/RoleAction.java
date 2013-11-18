@@ -26,7 +26,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller("roleAction")
 @Scope("prototype")
 @Res(name = "角色操作", sn = "role", parentSn = "security", orderNumber = 80)
-public class RoleAction implements ModelDriven
+public class RoleAction extends BaseAction implements ModelDriven
 {
 	private Role model;
 

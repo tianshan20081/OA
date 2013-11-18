@@ -28,7 +28,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller("resourceAction")
 @Scope("prototype")
 @Res(name = "资源操作", sn = "resource", orderNumber = 100, parentSn = "security")
-public class ResourceAction implements ModelDriven
+public class ResourceAction extends BaseAction implements ModelDriven
 {
 	@Resource
 	private ResourceService resourceService;

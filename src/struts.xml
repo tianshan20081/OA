@@ -6,10 +6,7 @@
 <struts>
 	<include file="common.xml" />
 	<package name="system" namespace="/system" extends="common">
-		<!-- <action name="company" class="companyAction" > <result name="company_input">/org/company_input.jsp</result> 
-			<result name="save_success">/org/save_success.jsp</result> </action> <action 
-			name="party" class="partyAction"> <result name="index">/org/index.jsp</result> 
-			</action> -->
+		<!-- <action name="company" class="companyAction" > <result name="company_input">/org/company_input.jsp</result> <result name="save_success">/org/save_success.jsp</result> </action> <action name="party" class="partyAction"> <result name="index">/org/index.jsp</result> </action> -->
 
 		<action name="*" class="{1}Action">
 			<result name="index">/org/index.jsp</result>
@@ -60,6 +57,7 @@
 			<result name="all_action_resource">/org/acl/all_action_resource.jsp</result>
 		</action>
 		<action name="login" class="loginAction">
+			<interceptor-ref name="oa_base_stack" />
 			<result name="back_index">/main.jsp</result>
 		</action>
 		<action name="index" class="indexAction">

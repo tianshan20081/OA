@@ -30,13 +30,12 @@ public class AuthMenuTreeVo
 		//菜单项链接
 		Map linkAtrr = new HashMap();
 		linkAtrr.put("href", menu.getHref());
-		this.data.put("attr", attr);
+		this.data.put("attr", linkAtrr);
 		
 		Set subMenus = menu.getChildren();
 		for (Iterator<Menu> iter=subMenus.iterator();iter.hasNext();) {
 			Menu subMenu = iter.next();
-			AuthMenuTreeVo vo = new AuthMenuTreeVo(subMenu);
-			children.add(vo);
+			children.add(new AuthMenuTreeVo(subMenu));
 		}
 	}
 

@@ -27,11 +27,17 @@
 			"themes" : {
 				"theme" : "apple"
 			},
-			"plugins" : [ "themes", "json_data" ]
+			"plugins" : [ "themes", "json_data" ,"ui"]
 		});
 
-		//给所有的链接设置其target属性为rightFrame，即在右边打开链接地址
-		$("a").attr("target", "rightFrame");
+		$("#menuContainer").bind("select_node.jstree", function(event, data) {
+			//取 li 标记下面的 href
+			var href = $(data.args[0]).attr("href") ;
+			if( href != "" && href !="#"){
+				$(parent.document).find("#rightFrame").attr("src", href);
+			}
+		
+		});
 	});
 </script>
 <style type="text/css">

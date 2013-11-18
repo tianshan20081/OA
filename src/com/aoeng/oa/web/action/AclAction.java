@@ -36,7 +36,7 @@ import com.opensymphony.xwork2.ActionContext;
  */
 @Controller("aclAction")
 @Scope("prototype")
-public class AclAction
+public class AclAction extends BaseAction
 {
 	@Resource
 	private RoleService roleService;

@@ -24,7 +24,7 @@ import com.opensymphony.xwork2.ModelDriven;
 @Controller("partyAction")
 @Scope("prototype")
 @Res(name = "组织机构操作", sn = "party",orderNumber=10)
-public class PartyAction implements ModelDriven
+public class PartyAction extends BaseAction implements ModelDriven
 {
 
 	protected Party model;

@@ -13,7 +13,8 @@
 	<package name="common" abstract="true" extends="struts-default">
 		<interceptors>
 			<interceptor name="pagerIntercepter" class="com.aoeng.oa.web.PagerIntercepter" />
-			<interceptor-stack name="myStack">
+			<interceptor name="loginInterceptor" class="com.aoeng.oa.web.LoginInterceptor" />
+			<interceptor-stack name="oa_base_stack">
 				<interceptor-ref name="pagerIntercepter" />
 				<interceptor-ref name="exception" />
 				<interceptor-ref name="alias" />
@@ -42,16 +43,19 @@
 				</interceptor-ref>
 				<interceptor-ref name="debugging" />
 			</interceptor-stack>
+			<interceptor-stack name="oa_need_login_stack">
+				<interceptor-ref name="oa_base_stack" />
+				<interceptor-ref name="loginInterceptor" />
+			</interceptor-stack>
 		</interceptors>
-		<default-interceptor-ref name="myStack" />
+		<default-interceptor-ref name="oa_need_login_stack" />
 
 		<global-results>
 			<result name="input">/common/error.jsp</result>
 			<result name="login">/index.jsp</result>
 		</global-results>
 		<global-exception-mappings>
-			<exception-mapping result="input"
-				exception="java.lang.RuntimeException" />
+			<exception-mapping result="input" exception="java.lang.RuntimeException" />
 		</global-exception-mappings>
 	</package>
 </struts>
