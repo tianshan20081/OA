@@ -42,7 +42,7 @@ public class InitDaoImpl extends BaseDaoImpl implements InitDao
 
 		User adminUser = new User();
 		adminUser.setUsername("admin");
-		adminUser.setPassword("admin");
+		adminUser.setPassword("1");
 
 		adminUser.setPerson(admin);
 
@@ -95,8 +95,8 @@ public class InitDaoImpl extends BaseDaoImpl implements InitDao
 		// TODO Auto-generated method stub
 		ACL acl = new ACL();
 		acl.setPrincipalId(principal.getPrincipalId());
+		acl.setPrincipalType(principal.getPrincipalType());
 		acl.setResourceId(r.getResourceId());
-		acl.setPrincipalType(r.getResourceType());
 		acl.setResourceType(r.getResourceType());
 		acl.setAclState(-1);// 菜单全部授权，1111111111111...111111111111
 		acl.setAclTriState(0);// 授权不继承
