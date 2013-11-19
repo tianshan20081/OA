@@ -41,10 +41,11 @@
 				<value>com/aoeng/oa/model/Party.hbm.xml</value>
 				<value>com/aoeng/oa/model/ACL.hbm.xml</value>
 				<value>com/aoeng/oa/model/ActionResource.hbm.xml</value>
-				
 				<value>com/aoeng/oa/model/Role.hbm.xml</value>
 				<value>com/aoeng/oa/model/User.hbm.xml</value>
 				<value>com/aoeng/oa/model/UserRoles.hbm.xml</value>
+				<value>com/aoeng/oa/model/ApproveInfo.hbm.xml</value>
+				<value>com/aoeng/oa/model/LeaveForm.hbm.xml</value>
 			</list>
 		</property>
 	</bean>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd" >
+<hibernate-mapping package="com.aoeng.oa.model">
+
+	<class name="LeaveFrom" table="T_LEAVEINFO">
+		<id name="id">
+			<generator class="native"/>
+		</id>
+		<property name="beginTime"/>
+		<property name="content"/>
+		<property name="createTime"/>
+		<property name="days"/>
+		<property name="status"/>
+		<property name="endTime"/>
+		<many-to-one name="approver"/>
+		<many-to-one name="leaver"/>
+	</class>
+</hibernate-mapping>
