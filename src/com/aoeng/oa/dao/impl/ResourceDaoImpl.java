@@ -73,4 +73,16 @@ public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao
 		return getSession().createQuery(hrl).list();
 	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.dao.ResourceDao#findActionResourceByClassName(java.lang.String)
+	 */
+	@Override
+	public ActionResource findActionResourceByClassName(String className) {
+		// TODO Auto-generated method stub
+		String hql = "select ar from ActionResource ar where ar.className like ?";
+		return (ActionResource) getSession().createQuery(hql).setParameter(0, "%" + className + "%").uniqueResult();
+	}
+
 }

@@ -76,4 +76,10 @@ public interface ResourceService
 	 */
 	public List<ActionResource> findAllActionResource();
 
+	/**
+	 * @param className
+	 * @return
+	 */
+	public ActionResource findActionResourceByClassName(String className);
+
 }

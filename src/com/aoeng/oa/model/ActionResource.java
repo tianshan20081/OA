@@ -14,6 +14,8 @@ import java.util.Set;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import com.opensymphony.xwork2.inject.Container;
+
 /**
  * Nov 4, 20137:26:40 PM
  * 
@@ -283,13 +285,48 @@ public class ActionResource implements SysResource
 
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.aoeng.oa.model.SysResource#getOperIndexByOperSn(int)
 	 */
 	@Override
 	public int getOperIndexByOperSn(String operSn) {
 		// TODO Auto-generated method stub
 		return opers.get(operSn).getOperIndex();
+	}
+
+	/**
+	 * @param methodName
+	 * @return
+	 */
+	public String getOperSnByMethodName(String methodName) {
+		// TODO Auto-generated method stub
+		if (null == opers) {
+			return null;
+		}
+		for (ActionMethodOper oper : opers.values()) {
+			if (contain(oper.getMethodName(), methodName)) {
+				return oper.getOperSn();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * @param methodName
+	 * @param methodName2
+	 * @return
+	 */
+	private boolean contain(String myMethodName, String methodName2) {
+		// TODO Auto-generated method stub
+		String[] methodNames = myMethodName.split("\\|");
+		for (String m : methodNames) {
+			if (m.equals(methodName2)) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }

@@ -337,4 +337,13 @@ public class ResourceServiceImpl implements com.aoeng.oa.service.ResourceService
 		return resourceDao.findAllActionResource();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.service.ResourceService#findActionResourceByClassName(java.lang.String)
+	 */
+	@Override
+	public ActionResource findActionResourceByClassName(String className) {
+		// TODO Auto-generated method stub
+		return	resourceDao.findActionResourceByClassName(className);
+	}
+
 }

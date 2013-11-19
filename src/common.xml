@@ -14,7 +14,9 @@
 		<interceptors>
 			<interceptor name="pagerIntercepter" class="com.aoeng.oa.web.PagerIntercepter" />
 			<interceptor name="loginInterceptor" class="com.aoeng.oa.web.LoginInterceptor" />
+			<interceptor name="authInterceptor" class="com.aoeng.oa.web.AuthInterceptor"/>
 			<interceptor-stack name="oa_base_stack">
+				<interceptor-ref name="authInterceptor" />
 				<interceptor-ref name="pagerIntercepter" />
 				<interceptor-ref name="exception" />
 				<interceptor-ref name="alias" />

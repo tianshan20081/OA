@@ -36,4 +36,10 @@ public interface ResourceDao extends BaseDao
 	 */
 	List<ActionResource> findAllActionResource();
 
+	/**
+	 * @param className
+	 * @return
+	 */
+	ActionResource findActionResourceByClassName(String className);
+
 }
