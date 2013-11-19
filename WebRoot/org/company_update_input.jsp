@@ -35,10 +35,19 @@
 	<div id="formwrapper">
 		<h3>更新公司基本信息</h3>
 		<form action="system/company.action" method="post">
-			<input type="hidden" name="method:update"><input type="hidden" name="id" value="<s:property value="id"/>">
+			<input type="hidden" name="method:update"> <input type="hidden" name="id" value="<s:property value="id"/>">
 			<fieldset>
 				<legend>
-					公司基本信息 <input type="button" value="添加下级部门" onclick="window.location = 'system/department!addInput.action?parent.id=${id}'"> <input type="button" value="添加子公司" onclick="window.location = 'system/company!addInput.action?parent.id=${id}'"> <input type="button" value="删除公司信息" onclick="window.location = 'system/company!del.action?id=${id}'">
+					公司基本信息
+					<s:if test="permit('department','CREATE')">
+						<input type="button" value="添加下级部门" onclick="window.location = 'system/department!addInput.action?parent.id=${id}'">
+					</s:if>
+					<s:if test="permit('company','CREATE')">
+						<input type="button" value="添加子公司" onclick="window.location = 'system/company!addInput.action?parent.id=${id}'">
+					</s:if>
+					<s:if test="permit('company','DELETE')">
+						<input type="button" value="删除公司信息" onclick="window.location = 'system/company!del.action?id=${id}'">
+					</s:if>
 				</legend>
 				<div>
 					<label for="name">名称</label> <input type="text" name="name" id="name" value="${name }" size="60" /> <br />

@@ -55,5 +55,11 @@ public interface AclDao extends BaseDao
 	 */
 	Principal findPrincipalById(String principalType, int principalId);
 
+	/**
+	 * @param resourceSn
+	 * @return
+	 */
+	SysResource findSysResourceByResourceSn(String resourceSn);
+
 
 }

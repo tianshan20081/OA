@@ -14,12 +14,15 @@ import org.springframework.stereotype.Service;
 
 import com.aoeng.oa.dao.AclDao;
 import com.aoeng.oa.dao.MenuDao;
+import com.aoeng.oa.dao.UserDao;
 import com.aoeng.oa.model.ACL;
 import com.aoeng.oa.model.Menu;
 import com.aoeng.oa.model.Principal;
 import com.aoeng.oa.model.SysResource;
+import com.aoeng.oa.model.User;
 import com.aoeng.oa.service.AclService;
 import com.aoeng.oa.vo.AuthVo;
+import com.aoeng.oa.vo.LoginInfoVo;
 
 /**
  * Nov 7, 20133:37:31 PM
@@ -29,6 +32,8 @@ import com.aoeng.oa.vo.AuthVo;
 public class AclServiceImpl implements AclService
 {
 
+	@Resource
+	private UserDao userDao;
 	@Resource
 	private AclDao aclDao;
 	@Resource
@@ -155,17 +160,40 @@ public class AclServiceImpl implements AclService
 	 */
 	private void removeDenyMenus(Collection<Menu> menus, int userId) {
 		// TODO Auto-generated method stub
-		for (Iterator<Menu> iter = menus.iterator();iter.hasNext();) {
-			//查询针对当前用户所拥有的权限
+		for (Iterator<Menu> iter = menus.iterator(); iter.hasNext();) {
+			// 查询针对当前用户所拥有的权限
 			Menu menu = iter.next();
 			AuthVo vo = searchAcl("User", userId, menu.getId(), "Menu", menu.getOperIndex()[0]);
-			if (null == vo  || !vo.isPermit()) {
+			if (null == vo || !vo.isPermit()) {
 				iter.remove();
-			}else {
-				//如果当前菜单是许可的，则查询其子菜单是否是许可的
+			} else {
+				// 如果当前菜单是许可的，则查询其子菜单是否是许可的
 				removeDenyMenus(menu.getChildren(), userId);
 			}
 		}
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.aoeng.oa.service.AclService#hasPermission(com.aoeng.oa.vo.LoginInfoVo, java.lang.String, java.lang.String)
+	 */
+	@Override
+	public boolean hasPermission(int userId, String resourceSn, String operSn) {
+		// TODO Auto-generated method stub
+		// 查找用户
+		User user = userDao.findById(User.class, userId);
+		// 根据资源标识查找资源，包括 Menu action
+		SysResource resource = aclDao.findSysResourceByResourceSn(resourceSn);
+
+		// 根據 operSn 取出资源的索引值
+		int operIndex = resource.getOperIndexByOperSn(operSn);
+		AuthVo vo = searchAcl(user.getPrincipalType(), user.getPrincipalId(), resource.getResourceId(),
+				resource.getResourceType(), operIndex);
+		if (vo != null && vo.isPermit()) {
+			return true;
+		}
+		return false;
 	}
 
 }

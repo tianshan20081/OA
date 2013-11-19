@@ -194,4 +194,14 @@ public class Menu implements SysResource
 		return null;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getOperIndexByOperSn(int)
+	 */
+	@Override
+	public int getOperIndexByOperSn(String operSn) {
+		// TODO Auto-generated method stub
+		
+		return 0;
+	}
+
 }

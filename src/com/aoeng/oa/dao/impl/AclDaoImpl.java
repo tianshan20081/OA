@@ -88,4 +88,14 @@ public class AclDaoImpl extends BaseDaoImpl implements AclDao
 		return (Principal) getSession().createQuery(hql).setParameter(0, principalId).uniqueResult();
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.dao.AclDao#findSysResourceByResourceSn(java.lang.String)
+	 */
+	@Override
+	public SysResource findSysResourceByResourceSn(String resourceSn) {
+		// TODO Auto-generated method stub
+		String hql = "select r from com.aoeng.oa.model.SysResource r where r.sn=?";
+		return (SysResource) getSession().createQuery(hql).setParameter(0, resourceSn).uniqueResult();
+	}
+
 }

@@ -283,4 +283,13 @@ public class ActionResource implements SysResource
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.aoeng.oa.model.SysResource#getOperIndexByOperSn(int)
+	 */
+	@Override
+	public int getOperIndexByOperSn(String operSn) {
+		// TODO Auto-generated method stub
+		return opers.get(operSn).getOperIndex();
+	}
+
 }

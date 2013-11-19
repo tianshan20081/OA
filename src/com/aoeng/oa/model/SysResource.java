@@ -20,5 +20,6 @@ public interface SysResource
 	public List<SysResource> getChildrenResource();
 
 	public String getSn();
+	public int getOperIndexByOperSn(String operSn);
 
 }
