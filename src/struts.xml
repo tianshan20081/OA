@@ -63,4 +63,16 @@
 		<action name="index" class="indexAction">
 		</action>
 	</package>
+	<package name="personal" namespace="/personal" extends="common">
+		<action name="leave" class="leaveFormAction">
+			<result name="add_input">/org/leave/add_input.jsp</result>
+			<result name="add_success">/org/leave/add_success.jsp</result>
+			<result name="user_leaveforms">/org/leave/leaveforms.jsp</result>
+			<result name="submit_success">/org/leave/submit_success.jsp</result>
+			<result name="leaving">/org/leave/leaving.jsp</result>
+			<result name="approve_input">/org/leave/approve_input.jsp</result>
+			<result name="approve_success">/org/leave/approve_success.jsp</result>
+			<result name="leaved">/org/leave/leaved.jsp</result>
+		</action>
+	</package>
 </struts>

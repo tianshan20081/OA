@@ -25,7 +25,7 @@ public class LeaveFormDaoImpl extends BaseDaoImpl implements LeaveFormDao
 	@Override
 	public List findLeaveFormsByUserId(int userId) {
 		// TODO Auto-generated method stub
-		String hql = "select lf from LeaveFrom where lf.id = ?";
+		String hql = "select lf from LeaveForm lf where lf.leaver.id = ?";
 		return getSession().createQuery(hql).setParameter(0, userId).list();
 	}
 

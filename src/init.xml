@@ -30,6 +30,12 @@
 
 	<!-- 菜单数据 -->
 	<entity class="Menu" sn="personal" name="个人办公" orderNumber="1" display="true" call="menuService.addMenu">
+		<entity class="Menu" name="请假" orderNumber="1" display="true">
+			<entity class="Menu" name="填写请假单" href="personal/leave!addInput.action" orderNumber="10" display="true" />
+			<entity class="Menu" name="我的请假单" href="personal/leave!uleaves.action" orderNumber="11" display="true" />
+			<entity class="Menu" name="待审请假单" href="personal/leave!leaving.action" orderNumber="12" display="true" />
+			<entity class="Menu" name="已审请假单" href="personal/leave!leaved.action" orderNumber="13" display="true" />
+		</entity>
 		<entity class="Menu" name="桌面" orderNumber="11" display="true">
 			<entity class="Menu" name="我的桌面" orderNumber="111" display="true" />
 			<entity class="Menu" name="桌面配置" orderNumber="112" display="true" />

@@ -9,7 +9,7 @@ import java.util.Date;
  * Nov 19, 20131:56:24 PM
  * 
  */
-public class LeaveFrom
+public class LeaveForm
 {
 	public static final String STATUS_NEW = "新建";
 	public static final String STATUS_END = "完成";

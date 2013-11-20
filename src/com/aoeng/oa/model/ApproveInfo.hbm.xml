@@ -9,6 +9,6 @@
 		<property name="content" />
 		<property name="approveTime" />
 		<many-to-one name="approver" />
-		<many-to-one name="leaveFrom" />
+		<many-to-one name="leaveForm" />
 	</class>
 </hibernate-mapping>

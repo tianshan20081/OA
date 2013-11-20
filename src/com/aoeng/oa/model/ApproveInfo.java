@@ -30,7 +30,7 @@ public class ApproveInfo
 	/**
 	 * 审批单据
 	 */
-	private LeaveFrom leaveFrom ;
+	private LeaveForm leaveForm ;
 	/**
 	 * @return the id
 	 */
@@ -80,18 +80,17 @@ public class ApproveInfo
 		this.approver = approver;
 	}
 	/**
-	 * @return the leaveFrom
+	 * @return the leaveForm
 	 */
-	public LeaveFrom getLeaveFrom() {
-		return leaveFrom;
+	public LeaveForm getLeaveForm() {
+		return leaveForm;
 	}
 	/**
-	 * @param leaveFrom the leaveFrom to set
+	 * @param leaveForm the leaveForm to set
 	 */
-	public void setLeaveFrom(LeaveFrom leaveFrom) {
-		this.leaveFrom = leaveFrom;
+	public void setLeaveForm(LeaveForm leaveForm) {
+		this.leaveForm = leaveForm;
 	}
-	
 	
 
 }

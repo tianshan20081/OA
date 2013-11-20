@@ -6,9 +6,7 @@ package com.aoeng.oa.service;
 import java.util.Date;
 import java.util.List;
 
-import com.aoeng.oa.model.ApproveInfo;
-import com.aoeng.oa.model.LeaveFrom;
-import com.sdicons.json.validator.impl.predicates.Int;
+import com.aoeng.oa.model.LeaveForm;
 
 /**
  * Nov 19, 20133:26:30 PM
@@ -19,9 +17,9 @@ public interface LeaveFormService
 	/**
 	 * 添加流向单
 	 * 
-	 * @param leaveFrom
+	 * @param leaveForm
 	 */
-	public void addLeaveForm(LeaveFrom leaveFrom);
+	public void addLeaveForm(LeaveForm leaveForm);
 
 	/**
 	 * 通过 userId 查找用户的所有 LeaveForms
@@ -35,16 +33,19 @@ public interface LeaveFormService
 	 * 添加审核信息
 	 * 
 	 * @param content
-	 * @param approveTime
+	 *            审核意见
 	 * @param approveId
+	 *            审核人Id
 	 * @param leaveFormId
+	 *            审核单据 ID
 	 */
-	public void addApproveInfo(String content, Date approveTime, int approveId, int leaveFormId);
+	public void addApproveInfo(String content, int approveId, int leaveFormId);
 
 	/**
 	 * 查找审批中的流向单
 	 * 
 	 * @param approverId
+	 *            依据审核人 ID 来查找该审核人应该处理的单据
 	 * @return
 	 */
 	public List findLeavingByApproverId(int approverId);
@@ -70,5 +71,5 @@ public interface LeaveFormService
 	 * 
 	 * @return
 	 */
-	public LeaveFrom findLeaveFormById(int leaveFormId);
+	public LeaveForm findLeaveFormById(int leaveFormId);
 }
